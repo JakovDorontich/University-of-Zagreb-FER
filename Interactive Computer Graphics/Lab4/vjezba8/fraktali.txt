@@ -1,0 +1,18 @@
+# Mandelbrotov skup
+M_eps 100
+M_m 16
+M_Umin -1.5
+M_Umax 0.5
+M_Vmin -1
+M_Vmax 1
+
+
+# Julijev skup
+J_eps 100
+J_m 16
+J_Umin -1
+J_Umax 1
+J_Vmin -1.2
+J_Vmax 1.2
+J_Creal 0.32
+J_Cimag 0.043

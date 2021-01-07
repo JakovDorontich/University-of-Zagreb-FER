@@ -1,0 +1,4 @@
+Zadatak 10.
+
+Determinanta matrice koristenjem LUP dekompozicijom:
+48.0

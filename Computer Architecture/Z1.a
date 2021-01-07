@@ -1,0 +1,31 @@
+		ORG 	0
+		LOAD 	R0, (500)
+		MOVE 	504, R1
+		MOVE 	1000, R2
+	
+LOOP	LOADB	R3, (R1+7)
+		CMP R3, 80
+		LOAD 	R3, (R1)
+		JP_NZ	POZ
+		
+		AND 	R3, 0FFFF, R3
+		XOR 	R3, 0FFFF, R3
+		ADD 	R3, 1, R3
+		
+POZ		STOREH 	R3, (R2)
+		ADD R1, 8, R1
+		ADD R2, 2, R2
+		SUB R0, 1, R0
+		JP_NZ LOOP
+		
+		MOVE	8000, R3
+		STOREH	R3, (R2)
+		
+		HALT
+		
+		ORG 	500
+		DW 		5
+		DH		1, 0, 0, 8000, 2, 0, 0, 0, 4, 0, 0, 8000, 25, 0, 0, 0, 49, 0, 0, 8000
+		
+		ORG		1000
+		DS		%D 12

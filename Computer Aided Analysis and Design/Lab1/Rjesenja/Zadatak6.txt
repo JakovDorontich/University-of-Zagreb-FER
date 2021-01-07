@@ -1,0 +1,17 @@
+Zadatak 6.
+
+Rjesenje sustava LUP dekompozicijom:
+Matrica L je oblika: 
+1.0 0.0 0.0 
+0.75 1.0 0.0 
+1.0 0.235294118 1.0 
+
+Matrica U je oblika: 
+4.0 1.0 3.0 
+0.0 4.25 -0.25 
+0.0 0.0 4.058823529 
+
+Rjesenje sustava, tj. matrica x je oblika: 
+1.000000001 
+2.0 
+0.999999999 

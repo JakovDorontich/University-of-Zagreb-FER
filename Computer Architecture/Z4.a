@@ -1,0 +1,96 @@
+CT_cmd	EQU		0FFFF0000
+CT_LR	EQU		0FFFF0004
+CT_bis	EQU		0FFFF0008
+CT_end	EQU		0FFFF000C
+
+DMA_src	EQU		0FFFF1000
+DMA_dst	EQU		0FFFF1004
+DMA_cnt	EQU		0FFFF1008
+DMA_cmd	EQU		0FFFF100C
+DMA_go	EQU		0FFFF1010
+DMA_bis	EQU		0FFFF1014
+
+BVJ_dat	EQU		0FFFFFFFC
+
+
+
+		ORG		0
+		MOVE	10000, SP
+		JP		MAIN
+		
+		
+		
+		ORG		0C
+		PUSH	R0
+		PUSH	R1
+		MOVE	SR, R0
+		PUSH	R0
+		
+		STORE	R0, (DMA_bis)
+		
+		LOAD 	R0, (LOC)
+		ADD 	R0, %D 40, R0
+		MOVE 	-1, R1
+		STORE 	R1, (R0-4)
+		STORE 	R0, (LOC)
+		
+		LOAD 	R0, (BLOKOVI)
+		ADD 	R0, 1, R0
+		STORE 	R0, (BLOKOVI)
+		
+		STORE 	R0, (DMA_END)
+		
+		POP		R0
+		MOVE	R0, SR
+		POP		R1
+		POP		R0
+		RETN
+		
+		
+		
+MAIN	MOVE	%B 001, R0
+		STORE	R0, (CT_cmd)
+		MOVE	%D 1000, R0
+		STORE	R0, (CT_LR)
+		
+		MOVE	%B 0111, R0
+		STORE	R0, (DMA_cmd)
+		
+IS_DONE	LOAD	R0, (BLOKOVI)
+		CMP		R0, 5
+		JP_Z	FINISH
+		
+RDY_CHK	LOAD	R0, (CT_bis)
+		ADD		R0, 0, R0
+		JP_Z	RDY_CHK
+		
+		STORE	R0, (CT_bis)
+		
+		MOVE 	BVJ_dat, R0
+		LOAD	R1, (LOC)
+		MOVE	9, R2
+		
+		STORE	R0, (DMA_src)
+		STORE	R1, (DMA_dst)
+		STORE 	R2, (DMA_cnt)
+		STORE	R0, (DMA_go)
+		
+COPIED	LOAD	R0, (DMA_END)
+		CMP		R0, 0
+		JR_Z 	COPIED
+		
+		MOVE	0, R0
+		STORE	R0, (DMA_END)
+		STORE	R0, (CT_end)
+		JP		IS_DONE
+		
+FINISH	MOVE	0, R0
+		STORE	R0, (CT_cmd)
+		STORE	R0, (DMA_cmd)
+		HALT
+
+		
+		
+BLOKOVI	DW		0
+DMA_END	DW		0
+LOC		DW		1000

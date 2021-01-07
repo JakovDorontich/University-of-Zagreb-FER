@@ -1,0 +1,18 @@
+---BEGIN OS2 CRYPTO DATA---
+Description:
+    Crypted file
+
+Method:
+    DES3
+    OFB
+
+Key length:
+    00c0
+
+Data:
+    aXXSi7XGszvn6R3iXI7iQGkrUjIRe68TjponHxFWnvo4Cqg6p8bZ8aaeBWtN
+    K07EQW9LHYxT67o8yGBQlRhf2gYhMwgECZx7Var/+VGDKaboTeauFQE4a9Zu
+    tJ9Z+aBAGsRpqNMynZPO6AvYjlJ+Y0VME97mqfTIlGkn93ubM8qx/mzgPm+/
+    EcBVrJd30ePv3dsa/PG6k5Q=
+
+---END OS2 CRYPTO DATA---

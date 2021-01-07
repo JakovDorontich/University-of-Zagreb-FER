@@ -1,0 +1,474 @@
+
+<!-- saved from url=(0062)http://www.zemris.fer.hr/predmeti/os2/komunikacija/poruke.html -->
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/prompt.js"></script><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/runScript.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Generator" content="Microsoft FrontPage 6.0">
+<meta name="Originator" content="Microsoft Word 9">
+<title>PORUKE2</title>
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>BestFit</w:Zoom>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<meta name="Template" content="D:\MSOFFICE\OFFICE\html.dot">
+</head>
+
+<body lang="EN-GB" link="blue" vlink="purple" style="tab-interval:36.0pt">
+
+<div class="Section1">
+
+<p align="center" style="text-align:center"><b><span style="font-size:18.0pt">KOMUNIKACIJA
+PORUKAMA<o:p></o:p></span></b></p>
+
+<p><b>REDOVI PORUKA<o:p></o:p></b></p>
+
+<p>Poruka je mala količina podataka (na primjer, do nekoliko stotina bajtova)
+koja može biti poslana u red poruka. Poruci se može pridijeliti tip po kojem se
+može prepoznati. Svaki proces s odgovarajućom dozvolom može primiti poruku iz
+reda.</p>
+
+<p>Red poruka može poslužiti kao semafor: stavljanje poruke u red je
+ekvivalentno otvaranju semafora, a uzimanje poruke iz reda ekvivalentno je
+zatvaranju semafora. Poziv za uzimanje poruke se normalno zablokira ako je red
+prazan što odgovara stanju kada je semafor na nuli.</p>
+
+<p><b>Sustavski pozivi za rad s redovima poruka<o:p></o:p></b></p>
+
+<p>Rad sa redovima poruka je ovdje opisan nešto detaljnije nego što su bili
+opisani pozivi za rad sa zajedničkom memorijom i skupovima semafora. Ipak, više
+detalja se može naći sa: <span style="font-family:&quot;Courier New&quot;">man msgget</span>,
+<span style="font-family:&quot;Courier New&quot;">man msgop</span> i <span style="font-family:&quot;Courier New&quot;">man msgctl</span>. Podaci potrebni za rad sa
+redovima poruka definirane su u datotekama <span style="font-family:&quot;Courier New&quot;">&lt;sys/types.h&gt;</span>,
+<span style="font-family:&quot;Courier New&quot;">&lt;sys/ipc.h&gt;</span> i <span style="font-family:&quot;Courier New&quot;">&lt;sys/msg.h&gt;</span> koje treba uključiti
+na početku programa. Opis bitnih struktura podataka može se naći sa <span style="font-family:&quot;Courier New&quot;">man intro</span>.</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int msgget(key_t
+key, int flags);<o:p></o:p></span></p>
+
+<p>Sustavski poziv <i>msgget </i>stvara red poruka, ili vraća identifikator
+reda poruka ako red već postoji. Poziv je analogan sustavskom pozivu <i>open</i>.
+Kao parametar prima ključ <i>key</i> i vraća identifikator reda, odnosno -1 ako
+dođe do greške.</p>
+
+<p>Identifikator reda je vrlo sličan opisniku datoteke, osim što ga može
+koristiti bilo koji proces koji poznaje taj broj. Ako je postavljen bit <span style="font-family:&quot;Courier New&quot;">IPC_CREATE</span> u <i>flags</i>, red se
+kreira ako već ne postoji, a devet najnižih bitova su dozvole za korištenje
+reda. Dozvola za pisanje dopušta da poruka bude poslana, a dozvola za čitanje
+dopušta primanje poruke. Ako <span style="font-family:&quot;Courier New&quot;">IPC_CREATE</span>
+nije postavljen onda red mora postojati i u tom slučaju ova funkcija samo
+pronalazi identifikator reda. (Ako se za <i>key </i>stavi <span style="font-family:&quot;Courier New&quot;">IPC_PRIVATE</span> onda se kreira novi red
+bez obzira na <span style="font-family:&quot;Courier New&quot;">IPC_CREAT</span>.)</p>
+
+<p>Dozvole pristupa u <i>flags</i> su definirane na slijedeći način:</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">00400Receive
+message by user<br>
+00200Send message by user<br>
+00040Receive message by group<br>
+00020Send message by group<br>
+00004Receive message by others<br>
+00002Send message by others<o:p></o:p></span></p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">struct
+msgbuf {<o:p></o:p></span></p>
+
+<p style="margin-left:72.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">long
+mtype;<br>
+char mtext[1];<o:p></o:p></span></p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">};<o:p></o:p></span></p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int
+msgsnd(int msqid, struct msgbuf *msgp, int msgsz, int msgflg);<o:p></o:p></span></p>
+
+<p>Sustavski poziv <i>msgsnd</i> šalje poruku u red čiji je ID <i>msqid</i>
+dobiven primjerice od <i>msgget</i>. <i>msgp </i>pokazuje na strukturu u kojoj
+na prvom mjestu mora biti dugačak cijeli broj veći od nule - vrsta poruke.
+Ostatak te strukture ovisi o podacima koji se šalju. Interno se ostatak poruke
+prihvaća kao niz znakova (bajtova) duljine <i>msgsz</i>. Tip poruke omogućava
+primaocu da odabere iz reda poruke koje želi izvaditi, odnosno može čekati
+određeni tip poruke. <i>msgflg</i> je obično 0, što uzrokuje da se <i>msgsnd</i>
+zablokira dok je red pun. Druga mogućnost je <span style="font-family:&quot;Courier New&quot;">IPC_NOWAIT</span>
+što uzrokuje da poziv <i>msgsnd</i> vrati grešku ako je red pun. <i>msgsnd</i>
+vraća 0 ako uspije ili -1 ako dođe do greške.</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int msgrcv(int
+msqid, struct msgbuf *msgp, int msgsz, long msgtyp, int msgflg);<o:p></o:p></span></p>
+
+<p>Sustavski poziv <i>msgrcv</i> poziva primalac poruke. <i>msgsz </i>mora biti
+veličina najveće poruke koja može stati u prostor na koji pokazuje <i>msgp.</i>
+Obzirom da primljena poruka može biti manja od toga, ovaj poziv vraća veličinu
+poruke ili -1 ako dođe do greške. Ako primalac želi određenu vrstu poruke onda
+je stavi u <i>msgtyp</i>. Inače se stavi 0 čime se uzima najstarija poruka iz
+reda (bez obzira na vrstu poruke). Ako je red prazan ili u njemu nema poruka
+tražene vrste onda će se <i>msgrcv </i>zablokirati, osim ako je <i>msgflg</i> (<i>msgflg</i>
+je obično 0) <span style="font-family:&quot;Courier New&quot;">IPC_NOWAIT</span> u kojem
+slučaju će se odmah vratiti -1 (greška).</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">struct
+ipc_perm { <o:p></o:p></span></p>
+
+<p style="margin-left:72.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">ushort
+cuid;/*
+<i>creator user id</i>*/<br>
+ushort cgid;/* <i>creator group id</i>*/<br>
+ushort uid;/* <i>user id</i>*/<br>
+ushort gid;/*<i> group id</i>*/<br>
+ushort mode;/*<i> r/w permission</i>*/<br>
+ushort seq;/* <i>slot usage sequence #</i>*/<br>
+key_t key;/* <i>key</i>*/<o:p></o:p></span></p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">}
+;<o:p></o:p></span></p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">struct
+msg { <o:p></o:p></span></p>
+
+<p style="margin-left:72.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">struct
+msg *msg_next;/*
+<i>ptr to next message on queue</i> */<br>
+long msg_type;/* <i>message type</i> */<br>
+short msg_ts;/* <i>message text size</i> */<br>
+short msg_spot;/* <i>message text map address</i> */<o:p></o:p></span></p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">};<o:p></o:p></span></p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">struct
+msqid_ds { <o:p></o:p></span></p>
+
+<p style="margin-left:72.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">struct
+ipc_perm msg_perm;/*
+<i>message operation permissions</i>*/<br>
+struct msg *msg_first; /* <i>ptr to the first message on the queue</i>*/<br>
+struct msg *msg_last; /* <i>ptr to the last message on the queue</i>*/<br>
+ushort msg_cbytes; /* <i>current number of bytes on the queue</i>*/<br>
+ushort msg_qnum; /* <i>nr of messages currently on the queue</i>*/<br>
+ushort msg_qbytes; /* <i>max nr of bytes allowed on the queue</i>*/<br>
+ushort msg_lspid; /* <i>last process that performed <b>msgsnd</b></i>*/<br>
+ushort msg_lrpid; /* <i>last process that performed <b>msgrcv</b></i> */<br>
+time_t msg_stime; /* <i>time of the last <b>msgsnd </b>operation</i>*/<br>
+time_t msg_rtime; /* <i>time of the last <b>msgrcv </b>operation</i>*/<br>
+time_t msg_ctime; /* <i>time of the last <b>msgctl </b>operation</i>*/<o:p></o:p></span></p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">}
+;<o:p></o:p></span></p>
+
+<p>Red poruka se nakon uporabe treba obrisati. Npr. pozivom <span style="font-size:11.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;">msgctl(msqid,IPC_RMID,NULL)</span><span style="mso-bidi-font-size:10.0pt">. Sustavski poziv</span></p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int
+msgctl(int msqid, int cmd, struct msqid_ds *buf);<o:p></o:p></span></p>
+
+<p>obavlja jednu od tri operacije u ovisnosti o <i>cmd</i>:</p>
+
+<p style="margin-left:36.0pt"><span style="font-family:&quot;Courier New&quot;">IPC_STAT </span>popunjava
+strukturu <i>buf</i> vrijednostima za red poruka <i>msqid</i>.</p>
+
+<p style="margin-left:36.0pt"><span style="font-family:&quot;Courier New&quot;">IPC_SET </span>mijenja
+<i>msg_perm.uid</i>, <i>msg_perm.gid</i>, <i>msg_perm.mode</i> i <i>msg_qbytes</i>
+za red poruka <i>msqid</i> sa vrijednostima iz <i>buf</i>.</p>
+
+<p style="margin-left:36.0pt"><span style="font-family:&quot;Courier New&quot;">IPC_RMID </span>uništava
+red poruka <i>msqid</i> i bilo koji zablokirani poziv vraća grešku u tom
+slučaju.</p>
+
+<p><b>OKOLINA (<i>environment</i>)<o:p></o:p></b></p>
+
+<p>Okolina je niz znakovnih nizova oblika "<i>ime=vrijednost</i>"
+koji se predaje svakom programu prilikom pokretanja. <i>ime</i> je varijabla
+okoline. Uobičajeno je za imena tih varijabli upotrebljavati velika slova iako
+to nije obavezno.</p>
+
+<p>Varijable okoline se najčešće postavljaju korištenjem korisničke ljuske
+(vidi: <span style="font-family:&quot;Courier New&quot;">man sh</span>, <span style="font-family:&quot;Courier New&quot;">man csh</span>). U ljusci <i>sh</i> se sa:</p>
+
+<p align="center" style="text-align:center"><span style="font-family:&quot;Courier New&quot;">ime=vrijednost<o:p></o:p></span></p>
+
+<p>postavlja varijabla za samo ljusku. Tek ako se izvede:</p>
+
+<p align="center" style="text-align:center"><span style="font-family:&quot;Courier New&quot;">export
+ime<o:p></o:p></span></p>
+
+<p>ista varijabla se uključuje i u okolinu koju ljuska predaje programima koje
+poziva. <span style="font-family:&quot;Courier New&quot;">export</span> daje popis svih
+varijabli koje se predaju kao okolina programima, dok <span style="font-family:
+&quot;Courier New&quot;">set</span> daje popis svih varijabli koje poznaje sama ljuska. <span style="font-family:&quot;Courier New&quot;">unset ime</span> poništava definiciju
+varijable <i>ime</i>.</p>
+
+<p>U ljusci <i>csh</i> se varijabla okoline programa definira sa:</p>
+
+<p align="center" style="text-align:center"><span style="font-family:&quot;Courier New&quot;">setenv
+ime vrijednost<o:p></o:p></span></p>
+
+<p>Varijable same ljuske se postavljaju sa:</p>
+
+<p align="center" style="text-align:center"><span style="font-family:&quot;Courier New&quot;">set
+ime=vrijednost<o:p></o:p></span></p>
+
+<p>Neke od najčešće korištenih varijabli: <i>logname</i>, <i>home</i>, <i>path</i>,
+<i>user</i> i <i>term</i> automatski se uključuju i u okolinu nakon ove naredbe,
+pa za njih nije potrebno upotrebljavati <i>setenv</i>. Prilikom uključenja u
+okolinu, imena ovih varijabli se pišu velikim slovima. <span style="font-family:
+&quot;Courier New&quot;">setenv</span> izlistava okolinu koja se predaje programima, dok <span style="font-family:&quot;Courier New&quot;">set</span> daje popis svih varijabli koje
+poznaje sama ljuska.</p>
+
+<p><b>Kako se poziva <i>main<o:p></o:p></i></b></p>
+
+<p>Prototip prema kojem se poziva funkcija <i>main</i> svakog programa u UNIX-u
+je:</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int main(int argc,
+char *argv[], char *envp[]);<o:p></o:p></span></p>
+
+<p><i>argc</i> je broj argumenata navedenih kod poziva programa, a <i>argv</i>
+je niz od <i>argc</i> kazaljki na te argumente kao nizove znakova. Prvi od tih
+nizova je ime samog pozvanog programa. <i>envp</i> je niz kazaljki na nizove
+znakova oblika "<i>ime=vrijednost</i>" koji čine okolinu. Posljednja
+kazaljka je <span style="font-family:&quot;Courier New&quot;">NULL</span>. Okolini se
+može pristupiti i na praktičniji način nego korištenjem <i>envp</i>. Zbog toga
+se <i>main</i> može definirati i kao:</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int main(int argc,
+char *argv[]) { ... }<o:p></o:p></span></p>
+
+<p>Također, program koji ne koristi nikakve ulazne parametre može definirati <i>main</i>
+kao:</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int main(void) {
+... }<o:p></o:p></span></p>
+
+<p><i>main</i> treba vratiti cjelobrojnu vrijednost jer poziv možemo
+pojednostavljeno zamisliti kao:</p>
+
+<p align="center" style="text-align:center"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">exit(main(argc, argv, envp));<o:p></o:p></span></p>
+
+<p>Ako program završava pozivom <i>exit</i> na nekom mjestu, onda ne dolazi do
+povratka iz <i>main</i>. Međutim, ako <i>main</i> normalno završava, onda je
+potrebna povratna vrijednost koja će postati argument poziva <i>exit</i>.</p>
+
+<p><b>Pristup varijablama okoline iz programa<o:p></o:p></b></p>
+
+<p><i>envp</i> nije pogodan za pristup varijablama okoline jer je poznat samo
+unutar main, a ne i u ostalim funkcijama programa. Zato postoji globalna
+varijabla:</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">extern char
+*environ[];<o:p></o:p></span></p>
+
+<p>koja je, također, niz kazaljki na nizove znakova koji čine okolinu. Toj
+varijabli se može pristupati izravno ili korištenjem funkcija <i>getenv</i> i <i>putenv</i>.</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">char *getenv(char
+*name);<o:p></o:p></span></p>
+
+<p><i>name</i> pokazuje na niz znakova s <i>imenom</i> varijable okoline kojoj
+treba pristupiti. Rezultat je kazaljka na <i>vrijednost</i> te varijable u nizu
+oblika "<i>ime=vrijednost</i>" ili <span style="font-family:&quot;Courier New&quot;">NULL</span>
+ako varijabla nije nađena. Npr. ako u okolini postoji "<i>nadimak=pero</i>", 
+tada će getenv("<i>nadimak</i>") vratiti pokazivač na "<i>pero</i>".</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int putenv(char
+*string);<o:p></o:p></span></p>
+
+<p><i>string</i> pokazuje na niz znakova oblika "<i>ime=vrijednost</i>".
+<i>putenv</i> ga uključuje u okolinu umjesto postojećeg niza koji počinje istim
+<i>imenom</i> ili ga dodaje u okolinu. Rezultat je različit od 0 samo ako <i>putenv</i>
+nije dobio potrebnu memoriju za proširenje okoline.</p>
+
+<p><i>putenv</i> mijenja okolinu na koju pokazuje <i>environ</i> i kojoj se
+pristupa pomoću <i>getenv</i>. Međutim, pri tome se ne mijenja <i>envp</i> koji
+je predan funkciji <i>main</i>. Niz znakova na koji pokazuje kazaljka <i>string</i>
+postaje dio okoline.</p>
+
+<p><b>POKRETANJE PROGRAMA (sustavski pozivi <i>exec</i>...)<o:p></o:p></b></p>
+
+<p>Sustavski pozivi <i>exec</i> (u svim oblicima) inicijaliziraju proces novim
+programom. Jedino pomoću njih se izvršavaju programi u UNIX-u. Postoji šest
+poziva koji se uglavnom razlikuju po načinu prijenosa parametara (vidi <span style="font-family:&quot;Courier New&quot;">man exec</span>):</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int execl(char
+*path, char *arg0, char *arg1,....., char *argn, char *null)<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int execv(char
+*path, char *argv[])<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int execle(char
+*path, char *arg0,...., char *argn, char *null, char *envp[])<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int execve(char
+*path, char *argv[], char *envp[])<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int execlp(char
+*file, char *arg0,...., char *argn, char *null)<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int execvp(char
+*file, char *argv[])<o:p></o:p></span></p>
+
+<p>Pozivom neke verzije poziva <i>exec</i> izvršava se navedeni program od
+početka, tj. pozivom funkcije <i>main</i>. Ako je poziv uspio, iz njega nema
+povratka. U slučaju greške rezultat je -1.</p>
+
+<p>Argument <i>path</i> mora sadržavati put do datoteke sa izvršnom verzijom
+programa ili tekstom koji se može interpretirati (počinje sa<span style="font-family:&quot;Courier New&quot;"> #! </span>) nekim drugim programom, najčešće
+ljuskom. Kod <i>execlp</i> i <i>execvp</i>, dovoljno je da argument <i>file</i>
+bude samo ime takve datoteke, a ona se traži u direktorijima koji su navedeni
+kao vrijednost varijable okoline "<span style="font-family:&quot;Courier New&quot;">PATH</span>".</p>
+
+<p><i>execl</i>, <i>execle</i> i <i>execlp</i> imaju varijabilan broj
+argumenata. Prvi argument <i>arg0</i> uvijek mora biti ime izvršne verzije
+prorama, a <span style="font-family:&quot;Courier New&quot;">NULL</span> je oznaka kraja
+argumenata. Od tih argumenata se kreira <i>argv</i> koji se predaje funkciji <i>main</i>
+novog programa.</p>
+
+<p>Kod <i>execv</i>, <i>execve</i> i <i>execvp</i> predaje se izravno <i>argv</i>.
+Po dogovoru, i on mora imati barem jednu kazaljku koja pokazuje na niz znakova
+s imenom programa. Ostale pokazuju na argumente programa. Posljednja kazaljka
+mora biti <span style="font-family:&quot;Courier New&quot;">NULL</span> kako bi se znalo
+gdje je kraj i moglo izračunati <i>argc</i>.</p>
+
+<p><i>envp</i> u <i>execle</i> i <i>execve</i> je niz kazaljki na nizove
+znakova koji čine okolinu. Posljednja kazaljka mora biti <span style="font-family:&quot;Courier New&quot;">NULL</span>. Kod ostalih poziva, novi program
+dobiva postojeću okolinu (<i>environ</i>).</p>
+
+<p>Otvoreni opisnici datoteka ostaju otvoreni kroz poziv <i>execl</i>. Ako to
+nije potrebno, treba ih zatvoriti prije nekog od ovih poziva. Kao i kod
+sustavskog poziva <i>fork</i>, većina sustavskih atributa ostaje nepromjenjena.</p>
+
+<p><b>Primjer upotrebe <i>exec</i> i <i>fork<o:p></o:p></i></b></p>
+
+<p>Obično <i>exec</i> služi za inicijalizaciju procesa djeteta kreiranog
+sustavskim pozivom <i>fork</i>. Slijedeći primjer pokazuje kako se<i> fork</i>
+i <i>exec</i> obično pozivaju:</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">switch
+(fork()) { <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:72.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">case -1:<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:108.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">printf("Ne mogu kreirati novi proces\n");<br>
+break;<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:72.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">case 0:<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:108.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">execl("./ime","ime",NULL);<br>
+exit(1);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:72.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">default:<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:108.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">wait(NULL);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:36.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">}<o:p></o:p></span></p>
+
+<p>Ako <i>fork</i> ne uspije, rezultat je -1. Novi proces nije kreiran i dovoljno
+je ispisati odgovarajuću poruku ili pokušati ponovo. Ako je rezultat 0,
+nalazimo se u procesu djetetu i inicijaliziramo ga s programom <span style="font-family:&quot;Courier New&quot;">ime</span> bez dodatnih argumenata. Normalno
+nema povratka iz <i>execl</i>, ali ako on ne uspije, dijete ipak treba završiti
+sa <i>exit</i>. U slučaju nekog drugog rezultata poziva <i>fork</i>, radi se o
+nastavku procesa roditelja koji treba pričekati da dijete završi.</p>
+
+</div>
+
+<hr>
+<p><b>UPUTE za rad s naredbama ljuske operacijskog sustava za oslobađanje
+zauzetih računalnih resursa (zajedničke memorije, semafora i redova poruka)
+ukoliko dođe do nepredvidivog (!?) prekida izvođenja programa koji ih zauzima:</b></p>
+<p><b>Naredba<i> ipcs</i></b></p>
+<p>Ova naredba daje informacije o sredstvima koja sudjeluju u komunikaciji među
+procesima. Bez opcija ispisuje informacije o postojećim redovima poruka,
+zajedničkoj memoriji i skupovima semafora.</p>
+<p>Poziva se sa: <span style="font-family:&quot;Courier New&quot;">ipcs [<i>
+opcije</i> ]</span>.</p>
+<p>Opcije:</p>
+<p style="margin-left:72.0pt">-q ispisuje informacije o aktivnim redovima poruka<br>
+-m ispisuje informacije o aktivnim segmentima zajedničke memorije<br>
+-s ispisuje informacije o aktivnim semaforima</p>
+<p>Ako niti jedna od ovih opcija nije specificirana, tada se ispis može
+kontrolirati slijedećim opcijama:</p>
+<p style="margin-left:72.0pt">-b ispisuje najveću dozvoljenu veličinu
+informacije (na primjer, najveći dozvoljeni broj bajtova u redu poruka)<br>
+-c ispisuje ime korisnika i njegove grupe<br>
+-o ispisuje broj poruka u redu i ukupan broj bajtova u redu poruka, odnosno broj
+procesa priključenih zajedničkoj memoriji<br>
+-p ispisuje identifikacijski broj procesa ( koji je zadnji poslao poruku,
+priključio zajedničku memoriju i slično)<br>
+-t ispisuje informacije o vremenu koje ima nekakve veze sa semaforima, redovima
+poruka ili zajedničkom memorijom<br>
+-a upotrijebiti sve opcije</p>
+<p>Stanje se može promjeniti dok se izvršava ova naredba. pa je slika koju
+daje samo približna.</p>
+<p><b>Naredba<i> ipcrm</i></b></p>
+<p>Ova naredba uklanja red poruka, skup semafora ili oslobađa zajedničku
+memoriju. U stvari uklanjaju se identifikacijski brojevi. Poziva se sa: <span style="font-family:&quot;Courier New&quot;">ipcrm
+[ <i>opcije</i> ]</span>.</p>
+<p>Opcije:</p>
+<p style="margin-left:36.0pt">-q<i> msqid </i>uklanja identifikator reda poruka<i>
+msqid</i> iz sistema<br>
+-m <i>shmid </i>uklanja identifikator zajedničke memorije <i>shmid </i>iz
+sistema<br>
+-s <i>semid </i>uklanja identifikator semafora <i>semid<br>
+</i>-Q <i>msgkey </i>uklanja identifikator reda poruka koji je kreiran s ključem
+<i>msgkey<br>
+</i>-M <i>shmkey </i>uklanja identifikator zajedničke memorije zauzete s ključem
+<i>shmkey<br>
+</i>-S <i>semkey </i>uklanja identifikator semafora kreiranog s ključem <i>semkey</i></p>
+<hr>
+
+<p>Primjer rada s redovima poruka: <a href="http://www.zemris.fer.hr/predmeti/os2/komunikacija/kirk.c">kirk.c</a> <a href="http://www.zemris.fer.hr/predmeti/os2/komunikacija/spock.c">spock.c</a>
+<br>
+<font color="#FF0000">Pripazite! U navedenim primjerima ključ koji se koristi 
+prilikom dobavljanja reda poruka je postavljen na 12345. Ukoliko više studenata 
+odjednom pokreće primjer, doći do greške. Naime, red poruka je već stvoren red s 
+pravima pristupa 0600 i nitko drugi nema pravo slati ili čitati u taj red 
+poruka! Stogo, promijenite ključ u primjerice identifikator korisnika - UID, 
+kojeg možete dobaviti funkcijom getuid().</font></p>
+
+
+
+
+</body></html>

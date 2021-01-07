@@ -1,0 +1,67 @@
+;R0 - rezultat
+;R1 - Broj podataka u bloku
+;R2 - Broj bitova u bajtu - 1
+;R3 - Pozicija podataka u memoriji
+;R4 - Broj jedinica u podatku
+;R5 - Registar u koji se sprema originalna vrijednost broja.
+;R6 - Broj pretvorbi
+		
+		ORG 	0
+		
+GLAVNI	MOVE	%D 12, R1
+		MOVE	100, R3
+		MOVE	0, R6
+		MOVE	10000, SP
+
+LOOP	LOADB	R0, (R3)
+		CALL	PAR
+		STOREB	R0, (R3)
+		CMP		R5, R0
+		JP_Z	ISTI
+		ADD		R6, 1, R6
+ISTI	ADD		R3, 1, R3
+		SUB		R1, 1, R1
+		JP_NZ	LOOP
+		
+		STORE	R6, (2002)
+		
+		HALT
+	
+;-----------------------------------------------------------------------------		
+		
+PAR
+		PUSH	R0
+		PUSH	R2
+		PUSH	R4
+		
+;									SP 		- #R4#
+;			IZGLED					SP + 4	- #R2#
+;			 STOGA					SP + 8	- #podatak#
+;									SP + C	- #pov.adr.#
+
+		MOVE	7, R2
+		MOVE	0, R4
+		
+LOOP2	SHR		R0, 1, R0
+		ADC		R4, 0, R4
+		SUB		R2, 1, R2
+		JP_NZ	LOOP2
+		
+		LOADB	R0, (SP+8)
+		SHR		R4, 1, R4
+		JP_C	NEPARAN
+		
+		OR 		R0, 80, R0
+		JP		KRAJ
+		
+NEPARAN	AND		R0, 7F, R0
+		
+KRAJ	POP R4
+		POP R2
+		POP R5
+		RET
+		
+;-----------------------------------------------------------------------------
+		
+		ORG		100
+		DB		00, 01, 0FF, 02, 03, 0F3, 0F8, 0E, 0B, 36, 7E, 9F

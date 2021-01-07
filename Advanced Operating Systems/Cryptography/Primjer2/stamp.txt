@@ -1,0 +1,43 @@
+---BEGIN OS2 CRYPTO DATA---
+Description:
+    Stamp
+
+Method:
+    RSA
+    SHA-512
+    DES3
+    OFB
+
+Key length:
+    0400
+    0200
+    00c0
+
+Envelope data:
+    aXXSi7XGszvn6R3iXI7iQGkrUjIRe68TjponHxFWnvo4Cqg6p8bZ8aaeBWtN
+    K07EQW9LHYxT67o8yGBQlRhf2gYhMwgECZx7Var/+VGDKaboTeauFQE4a9Zu
+    tJ9Z+aBAGsRpqNMynZPO6AvYjlJ+Y0VME97mqfTIlGkn93ubM8qx/mzgPm+/
+    EcBVrJd30ePv3dsa/PG6k5Q=
+
+Signature:
+    841faef113d63a79fb1b49919ed9360370cb12de8fcacb698f7f37947e33
+    d4c4853a24752fb5797fb4068cd278dfe148d580318b607f25de3d597ea0
+    280b42dff91b6bfc8a3f26bd53ee5580de74db0e8f5dfc4625c62b89e790
+    0e79d8f02e5678869397f0a77172812ac7bdd1974ea952d9911774dffff9
+    82abb182ff138f16
+
+Envelope crypt key:
+    16ac4ef9f30a0f0dc04931c73df8d35fc2ee4c8d1db5ce037147004c4d70
+    c1b2f8d153488d1bd239693007b7e4c5ae795c4329879943d242f1f5927d
+    3094c452fc2dc90afd892ef61cd86f0009b6d01c6fa3184884f4290b2ecf
+    e4bc7e145135b4c55462b67b57420593dcac1bd84fdc039eecd40e7e77f0
+    e34569075323fe18
+
+Envelope crypt vector:
+    23fab88d08e81d41da7610bd654f07a63fc9a1c1b39db8ecf44c43ad7d12
+    49528e4b7e5b370b4c45fe2ff2c0458d0f9f542008f9b2f6badb89f62f3d
+    eff234ff06f49b48c1ea22d654227b194858d614aed8b828c50e5eab9200
+    7622cd95eab5f6f49db2abd39c96b24f9a5052e9692fa9d3416d000e33c9
+    3d9188c0cd55f640
+
+---END OS2 CRYPTO DATA---

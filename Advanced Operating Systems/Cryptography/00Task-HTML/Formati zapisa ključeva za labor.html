@@ -1,0 +1,275 @@
+
+<!-- saved from url=(0065)http://www.zemris.fer.hr/predmeti/os2/kriptografija/kljucevi.html -->
+<html><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/prompt.js"></script><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/runScript.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+<meta http-equiv="Content-Language" content="hr">
+
+<title>Formati zapisa ključeva za labor</title>
+</head>
+
+<body>
+
+<h2>Formati zapisa ključeva</h2>
+<p>Ključevi kriptografskih algoritama, certifikati, potpisi i ostale slične 
+informacije spremaju se u datoteke u posebnim formatima. Postoje standardi 
+kojima su definirani neki formati (PKCS #N), ali radi jednostavnosti ovdje ćemo 
+definirati jedan jednostavan format za primjenu u laboratorijskim vježbama.</p>
+<p>Datoteke u koje se spremaju ključevi (javni, tajni, ...) i kriptirane podaci su ASCII datoteke, 
+tj. sadržavaju isključivo ASCII znakove, odnosno samo slova engleske abecede 
+(velika i mala), brojke te znakove "-" i ":" (uz znakove za formatiranje: 
+razmak, novi red, tabulator).</p>
+<p>Datoteka počinje i završava sa oznakama početka i završetka:</p>
+<p><font face="Courier New" size="2">[...]</font><br>
+<font face="Courier New" size="2">---BEGIN OS2 CRYPTO DATA---<br>
+[... sadrzaj ...]<br>
+---END OS2 CRYPTO DATA---<br>
+[...]</font></p>
+<p>Sve što se nalazi izvan oznake početka i kraja se ignorira (može služiti za 
+komentar ili nešto drugo). Podaci se unutar tih ograda unose u obliku:</p>
+<p><font face="Courier New" size="2">Polje: <br>
+&nbsp;&nbsp;&nbsp; vrijednost</font></p>
+<p>Ime <font face="Courier New" size="2">Polje</font> počinje od prve kolone, dok se 
+ispred <font face="Courier New" size="2">vrijednost</font>-i nalaze četiri 
+razmaka. Različita polja mogu biti odvojena i sa praznim redom (redovima). 
+Ukoliko je vrijednost brojčana zapisuje se u heksadecimalnom zapisu i to tako da 
+je najznačajniji oktet prvi, a prvi bit je bit najveće težine. </p>
+<p>Npr. ako želimo zapisati broj <font face="Courier New" size="2">1334035093039<sub>(10)</sub>=1369AB0162F<sub>(16)</sub></font>, 
+onda zapis izgleda: <font face="Courier New" size="2">01369AB0162F</font> (mora 
+biti paran broj znamenaka).</p>
+<p>Ako je <font face="Courier New" size="2">vrijednost </font>duža od 60 
+znamenaka, onda se ona prekida nakon 60-tog znaka i nastavlja u slijedećem 
+retku, nakon početna četiri razmaka, kao u primjeru u nastavku:</p>
+<p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp; 
+123456789012345678901234567890123456789012345678901234567890<br>
+&nbsp;&nbsp;&nbsp; 0004332fa6ec6e6a66687123cdf1233ab345bcf64d6574e43653012b1233<br>
+&nbsp;&nbsp;&nbsp; 123123441233ab345bcf64d6574e43653012bcd134c123c412c01234c123<br>
+&nbsp;&nbsp;&nbsp; ff0ed322ca00ed</font></p>
+<p>Polja koja datoteka sadržava ovise o sadržaju. U nastavku slijedi popis 
+polja i njihov opis.</p>
+<div style="background-color: #FFFF00">
+  <font face="Courier New" size="2">Description:</font> - što je u datoteci:
+<font face="Courier New" size="2">Secret key, Public key, Private key, 
+  Signature, Envelope, Crypted file </font>[...]<p><font face="Courier New" size="2">File name:</font> - ime datoteke koja 
+  se kriptira, čiji se sažetak radi, (opcionalno) ...</p>
+  <p><font face="Courier New" size="2">Method: </font>- kriptgrafski algoritam:
+<font face="Courier New" size="2">DES, RSA, AES, SHA-1, [...], </font> kod 
+  potpisa i omotnice ima više algoritama, pa se oni svi navode, svaki u 
+  novom redu, kao i ostali parametri (duljina ključa) - vidi primjere</p>
+<p><font face="Courier New" size="2">Key length:</font> - duljina ključa u 
+bitovima (heksadecimalno!)</p>
+<p><font face="Courier New" size="2">Secret key:</font> - tajni ključ (za 
+simetrične algoritme) (heksadecimalno!)</p>
+	<p><font face="Courier New" size="2">Initialization vector</font>: - 
+	inicijalizacijski vektor (ako treba za određeni način kriptiranja)</p>
+<!--<p><font face="Courier New" size="2">Public key:</font> - javni ključ (za 
+asimetrične algoritme, ukoliko je samo jedna vrijednost)</p>
+<p><font face="Courier New" size="2">Private key:</font> - tajni ključ (za 
+asimetrične algoritme, ukoliko je samo jedna vrijednost)</p>
+-->
+<p><font face="Courier New" size="2">Modulus: </font>- broj "n" kod RSA, LUC algoritama 
+(heksadecimalno!)</p>
+<p><font face="Courier New" size="2">Public exponent: </font>- broj "e" kod RSA, 
+LUC 
+algoritama (dio javnog ključa) (heksadecimalno!)</p>
+<p><font face="Courier New" size="2">Private exponent: </font>- broj "d" kod RSA, 
+LUC 
+algoritama (privatni ključ, uz broj n) (heksadecimalno!)</p>
+  <p><font size="2" face="Courier New">Signature:</font> - sažetak poruke (ili 
+  omotnice) potpisan tajnim ključem pošiljatelja poruke (heksadecimalno!)</p>
+  <p><font face="Courier New" size="2">Data: </font>
+  <font face="Times New Roman">- kriptirana datoteka, <u>base 64 kodirano (ne heksa)</u></font></p>
+  <p><font face="Courier New" size="2">Envelope data:</font> - poruka kriptirana 
+  simetričnim ključem kod omotnice, <u>base 64 kodirano (ne heksa)</u></p>
+  <p><font face="Courier New" size="2">Envelope crypt key:</font> - simetrični 
+  ključ kriptiran javnim ključem primatelja poruke (heksadecimalno!)</p>
+</div>
+<p>Popis polja može još rasti, ali tek u dogovoru sa asistentima. Ukoliko neko 
+polje nedostaje prijavite e-mailom.</p>
+<p>Polja <font face="Courier New" size="2">Description</font> i
+<font face="Courier New" size="2">Method </font>su obavezna za sve datoteke. 
+Ostala ovise o algoritmu. Npr. <font face="Courier New" size="2">Key lenght
+</font>nije obavezan za DES jer je poznato da DES radi isključivo sa 56 bitovnim 
+ključevima (prikazanih sa 64 bita), dok je kod AES-a obavezan, pošto AES 
+podržava različite duljine ključeva.</p>
+<h3>Primjeri datoteka za DES i RSA algoritme</h3>
+<p>Kriptirana datoteka (DES):</p>
+<div style="background-color: #00FFFF">
+  <font face="Courier New" size="2">---BEGIN OS2 CRYPTO DATA---<br>
+  Description: <br>
+  &nbsp;&nbsp;&nbsp; Crypted file<br>
+  <br>
+Method:<br>
+&nbsp;&nbsp;&nbsp; DES<br>
+  <br>
+  File name:<br>
+&nbsp;&nbsp;&nbsp; Datoteka.x<br>
+  <br>
+  Data:<br>
+&nbsp;&nbsp;&nbsp; asdhfgakewgrqj23rfj213hgf5j234crj3t2n3h4j2hgc54j51c2j35c12j1<br>
+&nbsp;&nbsp;&nbsp; wjhacsjfcjdhgj23gjr213ecr5r234jqg3j2a3h4f2thg54c51k2j35n12f3<br>
+&nbsp;&nbsp;&nbsp; dmwtfgdyeignoz23nfz213tgf5z234snz3l2u3t4z2tgs54z51s2z35s12za<br>
+&nbsp;&nbsp;&nbsp; iztdsmzfszwtgz23gzn213esn5n234zog3z2d3t4f2ltg54s51y2z35u12f5<br>
+&nbsp;&nbsp;&nbsp; rtwasd=<br>
+  <br>
+  ---END OS2 CRYPTO DATA---</font></div>
+<p>DES sjednički ključ:</p>
+<div style="background-color: #00FFFF">
+  <font face="Courier New" size="2">---BEGIN OS2 CRYPTO DATA---<br>
+Description: <br>
+&nbsp;&nbsp;&nbsp; Secret key<br>
+<br>
+Method:<br>
+&nbsp;&nbsp;&nbsp; DES<br>
+<br>
+Secret key:<br>
+&nbsp;&nbsp;&nbsp; 1f5ec633c4602255<br>
+---END OS2 CRYPTO DATA---</font></div>
+<p>RSA privatni ključ: <font color="#FF0000">
+<span style="background-color: #FFFF00">(duljina ključa je duljina broja n, tj. 
+modulusa)</span></font></p>
+<div style="background-color: #00FFFF">
+  <font face="Courier New" size="2">---BEGIN OS2 CRYPTO DATA---<br>
+Description: <br>
+&nbsp;&nbsp;&nbsp; Private key<br>
+<br>
+Method:<br>
+&nbsp;&nbsp;&nbsp; RSA<br>
+<br>
+Key length:<br>
+&nbsp;&nbsp;&nbsp; 0400<br>
+<br>
+Modulus:<br>
+&nbsp;&nbsp;&nbsp; 3014332fa6ec6e6a66687123cdf1233ab345bcf64d6574e43653012b1233<br>
+&nbsp;&nbsp;&nbsp; 123123441233ab345bcf64d6574e43653012bcd134c123c412c01234c123<br>
+&nbsp;&nbsp;&nbsp; ff0ed322ca00ed11<br>
+<br>
+Private exponent:<br>
+&nbsp;&nbsp;&nbsp; 123123441233ab345bcf64d6574e43653012bcd134c123c412c01234c123<br>
+&nbsp;&nbsp;&nbsp; 3014332fa6ec6e6a66687123cdf1233ab345bcf64d6574e43653012b1233<br>
+&nbsp;&nbsp;&nbsp; ed322c07</font><p><font face="Courier New" size="2">---END OS2 CRYPTO DATA---</font></p>
+</div>
+<p>RSA javni ključ:</p>
+<div style="background-color: #00FFFF">
+  <font face="Courier New" size="2">---BEGIN OS2 CRYPTO DATA---<br>
+Description: <br>
+&nbsp;&nbsp;&nbsp; Public key<br>
+<br>
+Method:<br>
+&nbsp;&nbsp;&nbsp; RSA<br>
+<br>
+Key length:<br>
+&nbsp;&nbsp;&nbsp; 0400<br>
+<br>
+Modulus:<br>
+&nbsp;&nbsp;&nbsp; 3014332fa6ec6e6a66687123cdf1233ab345bcf64d6574e43653012b1233<br>
+&nbsp;&nbsp;&nbsp; 123123441233ab345bcf64d6574e43653012bcd134c123c412c01234c123<br>
+&nbsp;&nbsp;&nbsp; ff0ed322ca00ed11<br>
+<br>
+Public exponent:<br>
+&nbsp;&nbsp;&nbsp; 010001</font><p><font face="Courier New" size="2">---END OS2 CRYPTO DATA---</font></p>
+</div>
+<p>Digitalni potpis:</p>
+<div style="background-color: #00FFFF">
+  <font face="Courier New" size="2">---BEGIN OS2 CRYPTO DATA---<br>
+  Description: <br>
+  &nbsp;&nbsp;&nbsp; Signature<br>
+  <br>
+  File name:<br>
+&nbsp;&nbsp;&nbsp; Datoteka.x<br>
+  <br>
+  Method:<br>
+  &nbsp;&nbsp;&nbsp; SHA-1<br>
+&nbsp;&nbsp;&nbsp; RSA<br>
+  <br>
+  Key length:<br>
+&nbsp;&nbsp;&nbsp; A0<br>
+  &nbsp;&nbsp;&nbsp; 0400<br>
+  <br>
+  Signature:<br>
+&nbsp;&nbsp;&nbsp; 32345aec43cff2fda786123acbd65454a6cd64e442344231124341241242<br>
+&nbsp;&nbsp;&nbsp; 123123441233ab345bcf64d6574e43653012bcd134c123c412c01234c123<br>
+&nbsp;&nbsp;&nbsp; d322ca00ed11<br>
+  <br>
+  ---END OS2 CRYPTO DATA---</font></div>
+<p>Opcionalno se digitalni potpis može dodati na kraj datoteke ukoliko je ona 
+tekstualna (u tom slučaju ostaviti samo polja Method i Signature). U tom slučaju 
+treba i kod provjere potpisa prihvaćati i takve datoteke. Ovaj način umetanja 
+potpisa je opcionalan, tj. spremanje potpisa u posebnu datoteku i dalje treba 
+ostvariti.</p>
+<p>Digitalna omotnica:</p>
+<div style="background-color: #00FFFF">
+  <font face="Courier New" size="2">---BEGIN OS2 CRYPTO DATA---<br>
+  Description: <br>
+  &nbsp;&nbsp;&nbsp; Envelope<br>
+  <br>
+  File name:<br>
+&nbsp;&nbsp;&nbsp; Datoteka.x<br>
+  <br>
+  Method:<br>
+  &nbsp;&nbsp;&nbsp; AES<br>
+&nbsp;&nbsp;&nbsp; RSA<br>
+  <br>
+  Key length:<br>
+&nbsp;&nbsp;&nbsp; 0100<br>
+  &nbsp;&nbsp;&nbsp; 0400<br>
+  <br>
+  Envelope data:<br>
+&nbsp;&nbsp;&nbsp; asdhfgakewgrqj23rfj213hgf5j234crj3t2n3h4j2hgc54j51c2j35c12j1<br>
+&nbsp;&nbsp;&nbsp; wjhacsjfcjdhgj23gjr213ecr5r234jqg3j2a3h4f2thg54c51k2j35n12f3<br>
+&nbsp;&nbsp;&nbsp; dmwtfgdyeignoz23nfz213tgf5z234snz3l2u3t4z2tgs54z51s2z35s12za<br>
+&nbsp;&nbsp;&nbsp; iztdsmzfszwtgz23gzn213esn5n234zog3z2d3t4f2ltg54s51y2z35u12f5<br>
+&nbsp;&nbsp;&nbsp; rtwasd=<br>
+  <br>
+  Envelope crypt key:<br>
+&nbsp;&nbsp;&nbsp; 123123441233ab345bcf64d6574e43653012bcd134c123c412c01234c123<br>
+&nbsp;&nbsp;&nbsp; 3014332fa6ec6e6a66687123cdf1233ab345bcf64d6574e43653012b1233<br>
+&nbsp;&nbsp;&nbsp; af0ed322ca00ed12<br>
+  <br>
+  ---END OS2 CRYPTO DATA---</font></div>
+<p><b>Napomena</b>: brojke u datotekama su radi ilustracije, nisu stvarne 
+(ispravne) vrijednosti!</p>
+
+<h3>Base64 kodiranje</h3>
+<p>Base64 kodiranje koristi se da se proizvoljni niz okteta prevori u niz 
+čitljivih znakova. Algoritmi za kodiranje i dekodiranje su vrlo jednostavni. 
+Kodiranje se obavlja tako da se za svaka tri okteta na ulazu dobiju četiri znaka 
+(slova engleske abecede A-Z, a-z, 0-9, +, / i =), tj. 24 bita se dijeli na 4 
+dijela po 6 bita, a svaki dio se zamjenjuje jednim znakom iz tablice 
+(odgovarajući indeks). Datoteka malo naraste (za 1/3), ali se mez problema 
+prenosi u tekstualnom obliku (email, news, ...).</p>
+<p>Tablica pretvorbe ima 64 polja, prvi je A, a zadnji znak /, prema: </p>
+<p><font size="2" face="Courier New">
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/</font>.</p>
+<p>Ukoliko zadnji blok pri kodiranju nije 24 bita nego manje (8 ili 16) postupa 
+se na slijedeći način:</p>
+<ul>
+  <li>ako zadnji blok ima 8 bita: blok se s desne strane nadopunjava sa 4 nule 
+  (do 12 bita), blok se dijeli na dva dijela po 6 bita koji svaki daju po jedan 
+  znak, te se još na kraju dodaju dva znaka jednako (=), koji ima specijalno 
+  značenje popune,</li>
+  <li>zadnji blok ima 16 bita: dodaju se dvije nule, to se pretvori po tablici u 
+  tri znaka te se na kraj doda jedan znak =.</li>
+</ul>
+<p>Primjer teksta:</p>
+<div style="background-color: #00FFFF">
+  <font face="Courier New" size="2">Base64 kodiranje koristi se da se 
+  proizvoljni niz okteta prevori <br>
+  u niz čitljivih znakova. Algoritmi za kodiranje i dekodiranje su <br>
+  vrlo jednostavni. Kodiranje se obavlja tako da se za svaka tri <br>
+  okteta na ulazu dobiju četiri znaka, tj. 24 bita se dijeli na 4 <br>
+  dijela po 6 bita, ...</font></div>
+<p>i njegov base64 zapis (naredba<font face="Courier New" size="2"> uuencode -m</font>):</p>
+<div style="background-color: #00FFFF">
+  <font face="Courier New" size="2">
+  QmFzZTY0IGtvZGlyYW5qZSBrb3Jpc3RpIHNlIGRhIHNlIHByb2l6dm9sam5p<br>
+  IG5peiBva3RldGEgcHJldm9yaSAKdSBuaXogY2l0bGppdmloIHpuYWtvdmEu<br>
+  IEFsZ29yaXRtaSB6YSBrb2RpcmFuamUgaSBkZWtvZGlyYW5qZSBzdSAKdnJs<br>
+  byBqZWRub3N0YXZuaS4gS29kaXJhbmplIHNlIG9iYXZsamEgdGFrbyBkYSBz<br>
+  ZSB6YSBzdmFrYSB0cmkgCm9rdGV0YSBuYSB1bGF6dSBkb2JpanUgY2V0aXJp<br>
+  IHpuYWthLCB0ai4gMjQgYml0YSBzZSBkaWplbGkgbmEgNCAKZGlqZWxhIHBv<br>
+  IDYgYml0YSwgLi4uCgo=</font></div>
+<p>&nbsp;</p>
+
+
+
+
+</body></html>

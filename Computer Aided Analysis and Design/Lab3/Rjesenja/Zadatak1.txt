@@ -1,0 +1,14 @@
+Zadatak 1.
+
+Funkcija 3: 	X0=[0, 0]
+Postupak gradijentnog spusta:
+		Postupak je zavrsio divergenciom.
+	Minimum je u tocki:  [2.2188007849009166, -3.3282011773513744]
+	Vrijednost funkcije cilja u tocki:  0.15559
+	Broj evaluacija funkcije cilja:  1
+	Broj evaluacija gradijenta:  10000
+Postupak gradijentnog spusta (zlatni rez):
+	Minimum je u tocki:  [1.9999998472000708, -2.9999997708001063]
+	Vrijednost funkcije cilja u tocki:  0.0
+	Broj evaluacija funkcije cilja:  94
+	Broj evaluacija gradijenta:  3

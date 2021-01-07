@@ -1,0 +1,82 @@
+VJ1_dat EQU 	0FFFF1000		;Definiramo vanjske jedinice.
+	
+VJ2_dat EQU 	0FFFF2000
+VJ2_bis EQU 	0FFFF2004
+	
+VJ3_dat EQU 	0FFFF3000
+VJ3_bis EQU 	0FFFF3004
+VJ3_ser EQU 	0FFFF3008		;"ser" od "served".
+VJ3_all EQU 	0FFFF300C		;"all" od "allow".
+		
+		ORG 	0
+		MOVE	10000, SP		;Inicijaliziramo stog.
+		JP 		START			;Preskacemo pokretanje prekidnog potprograma.
+	
+		ORG 	8
+		DW 		500				;Recimo da je prekidni potprogram na adresi 500(16).
+		
+		
+
+START	MOVE	%B 10000, SR	;Omoguci maskirajuce prekide
+		MOVE	1, R0			;Omogucujemo VJ3 prekide.
+		STORE	R0, (VJ3_all) 
+		
+LOOP	LOAD	R0, (VJ2_bis)	;Ucitavamo spremnost VJ2.
+		ADD		R0, 0, R0		;Postavljamo zastavice.
+		JP_Z	LOOP			;Ako VJ2 nije spremna, skacemo na pocetak petlje.
+		
+		LOAD	R0, (BROJ)		;Ako je VJ2 spremna, u R0 ucitavamo vrijednost na mem. adresi BROJ,
+		STORE	R0, (VJ2_dat)	;pa je upisujemo u VJ2
+		STORE	R0, (VJ2_bis)	;i "spustamo joj ruku" (kazemo da smo gotovi s njom).
+		
+		LOAD	R0, (BROJAC)	;Nakon upisa, povecavamo BROJAC za 1,
+		ADD		R0, 1, R0
+		STORE	R0, (BROJAC)
+		JP		LOOP			;te se vracamo na pocetak petlje.
+		
+
+		
+		ORG 	500
+		PUSH 	R0				;Spremamo kontekst.
+		MOVE	SR, R0			;Moramo spremiti i statusni registar.
+		PUSH	R0
+		
+		STORE	R0, (VJ3_bis)	;Dojavljujemo VJ3 da smo skuzili prekid.
+		
+		LOAD	R0, (VJ1_dat)	;Ucitavamo podatak iz VJ1 u R0.
+IS_P	OR		R0, R0, R0		;Provjeravamo predznak ucitanog podatka.
+		JP_P	PLUS			;Ako je pozitivan, idemo na PLUS.
+		
+		MOVE	0, R0			;Ako podatak nije pozitivan, stavljamo 0 u R0,
+		STORE	R0, (VJ3_all)	;spremamo 0 na VJ_all, cime zabranjujemo daljnje prekide,
+		HALT					;te zaustavljamo procesor
+		
+PLUS	PUSH	R0				;Podatak je pozitivan, guramo R0 na stog,
+		CALL	OBRADI			;zovemo OBRADI.
+		ADD		SP, 4, SP		;Skidamo argument sa stoga
+		STORE	R0, (BROJ)		;Dobiveni broj je vracen pomocu R0, zapisujemo ga na mem. adresu BROJ.
+		
+		LOAD	R0, (BROJAC)	;Na kraju, ucitavamo vrijednost brojaca u R0,
+		STORE	R0, (VJ3_dat)	;Saljemo je na VJ3.
+
+		STORE	R0, (VJ3_ser)	;Javljamo kraj posluzivanja VJ3.
+		POP 	R0				;Obnavljamo kontekst.
+		MOVE	R0, SR
+		POP		R0
+		
+		RETI					;Izlazimo iz prekidnog potprograma.
+		
+OBRADI	PUSH R1					;Spremamo kontekst.
+
+		LOAD	R1, (SP+8)		;Na SP je kontekstni R1, na SP+4 je povratna adresa, a na SP+8 je nas argument.
+		MOVE	1, R0			;Stavljamo 1 u R0.
+		
+		SHL		R0, R1, R0		;Pomicemo R0 ulijevo za onoliko mjesta koliko je zapisano u R1. Ako je 0, 2^0 je 1, za 1 2^1 je 2 (tj. [1]->[10]), itd.
+		
+		POP		R1				;Obnavljamo kontekst.
+		RET
+		
+		
+		
+BROJ	DW 0					;BROJ inicijaliziran na 0 prema uputama.
+BROJAC	DW 0					;BROJAC je u 0 jer na pocetku nismo nista poslali.

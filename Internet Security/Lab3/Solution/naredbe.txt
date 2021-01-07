@@ -1,0 +1,52 @@
+|Zadatak 1:
+|
+| ip addr
+| ping 192.168.56.101   (*)
+| ping mail.fer.hr      (*)
+| ping 161.53.19.1      (*)
+| ping imunes.net       (*)
+
+
+|Zadatak 2:
+|
+| watch -n 0.5 netstat -ant
+| nmap -sU -sT 192.168.56.101   (*)
+| nmap -sS 192.168.56.101       (*)
+| nmap -O 192.168.56.101        (*)
+| nmap -sV 192.168.56.101       (*)
+| nmap -A 192.168.56.101        (*)
+
+
+|Zadatak 3:
+|
+| sudo imunes NETWORK.imn
+| ./test.sh
+
+
+|Zadatak 4:
+|
+| sudo su
+| himage pc
+| ssh-keygen
+| hcp pc:/root/.ssh/id_rsa /home/sui
+| hcp mail:/etc/ssh/sshd_config /home/sui/sshd_config_mail
+| hcp sshd_config_mail mail:/etc/ssh/sshd_config
+| hcp mail-relay:/etc/ssh/sshd_config /home/sui/sshd_config_mail
+| hcp sshd_config_mail mail-relay:/etc/ssh/sshd_config
+| ssh-copy-id root@192.168.2.10 -p 1111
+| hcp mail-relay:/root/.ssh/authorized_keys mail:/root/.ssh/authorized_keys
+| himage mail service ssh restart
+| himage mail-relay service ssh restart
+| ssh -J root@192.168.2.10:1111 root@192.168.1.10 -p 2222 -v
+
+
+
+|Zadatak 5:
+|
+| aircrack-ng SUI1_WEP.cap
+| aircrack-ng SUI2_WEP.cap
+
+
+
+
+(*) Naredba pokrenuta izvan virtualnog stroja

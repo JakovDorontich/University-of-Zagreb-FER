@@ -1,0 +1,78 @@
+
+<!-- saved from url=(0073)http://www.zemris.fer.hr/predmeti/os2/kriptografija/digitalni_potpis.html -->
+<html><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/prompt.js"></script><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/runScript.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+
+<meta http-equiv="Content-Language" content="hr">
+
+<title>Digitalni potpis</title>
+</head>
+
+<body>
+
+<h1>DIGITALNI POTPIS</h1>
+
+<h3>Osnovi pojmovi</h3>
+<p class="MsoNormal"><span lang="HR" style="mso-ansi-language:HR">Jedan od
+osnovnih načina zaštite vjerodostojnosti informacije je potpis. Potpis treba
+biti jedinstven i služi prilikom identifikacije i provjere
+pojedinca. Kod elektroničke informacije, koncept potpisa se mijenja. Potpis više
+ne smije biti jedinstven osobi koja potpisuje i u isto vrijeme nezavisan o
+informaciji koja se potpisuje, jer je elektronička kopija potpisa identična
+originalu i potpisivanje neovlaštenih dokumenata time postaje trivijalno.</span></p>
+<p class="MsoNormal"><span lang="HR" style="mso-ansi-language:HR">Nezaštićene
+elektroničke poruke je moguće relativno jednostavno presresti, neovlašteno čitati
+i mijenjati. Za digitalno nepotpisani e-mail nemoguće je dokazati izvornost, a
+niti integritet, jer se svatko može krivo predstaviti. Sigurnosna
+infrastruktura, točnije, <b>infrastruktura javnog ključa</b> (<i>PKI - Public Key
+Infrastructure</i><b>)</b> je osnova za ostvarenje sigurne i povjerljive
+razmjene podataka između sudionika u sustavu te potporu ostvarenju funkcija
+identifikacije i autentifikacije sudionika. Uz pomoć PKI postiže
+se tajnost i integritet informacije. Nadalje, PKI omogućuje sigurnu autentifikaciju sudionika u komunikaciji, razmjena dokumenata s mogućnošću
+kriptiranja, digitalnog potpisivanja i supotpisivanja te jedinstvenu
+registraciju javnih ključeva.</span></p>
+<p class="MsoNormal"><b><span lang="HR" style="mso-ansi-language:HR">Digitalna
+omotnica</span></b><span lang="HR" style="mso-ansi-language:HR"> osigurava
+tajnost, ali ne i besprijekornost informacije. Poruku pošiljatelj kriptira
+proizvoljnim (obično slučajno generiranim) simetričnim ključem <i>K </i>koristeći
+neki od simetričnih algoritama kriptiranja. Simetrični (sjednički) ključ se
+kriptira javnim ključem primatelja <i>P<sub>B</sub></i>. Kriptirana poruka i
+kriptirani ključ čine digitalnu omotnicu:</span></p>
+<p class="MsoNormal" align="center" style="text-align:center"><span lang="HR" style="mso-ansi-language:HR">digitalna_omotnica
+= { <i>E</i>(<i>m</i>,<i>K</i>); <i>E</i>(<i>K</i>,<i>P<sub>B</sub></i>) }.</span></p>
+<p class="Text6pta"><b><span lang="HR">Digitalni potpis.</span></b><span lang="HR">
+Od posebne je važnosti digitalni potpis koji uspostavlja identitet sudionika u
+elektroničkom poslovanju i osigurava integritet podataka. Drugim riječima,
+digitalni potpis služi za utvrđivanje besprijekornosti informacije i za
+identifikaciju pošiljatelja. Digitalni potpis ne osigurava tajnost informacije.
+Iz poruke pošiljatelj izračunava <b>sažetak</b> (<i>message digest</i>)
+koristeći <i>hash</i> funkciju (<i>hash </i>ili<i> digest function</i>). Sažetak
+se kriptira privatnim ključem pošiljatelja <i>S<sub>A</sub></i> i dodaje se
+izvornoj poruci:</span></p>
+<p class="MsoNormal" align="center" style="text-align:center"><span lang="HR" style="mso-ansi-language:HR">digitalni_potpis
+= { <i>m</i>; <i>E</i>[<i>Q</i>(<i>m</i>), <i>S<sub>A</sub></i>] },</span></p>
+<p class="MsoNormal"><span lang="HR" style="mso-ansi-language:HR">gdje je <i>Q</i>(<i>m</i>)
+sažetak poruke <i>m</i>.</span></p>
+<p class="MsoNormal"><span lang="HR" style="mso-ansi-language:HR">Primatelj može
+utvrditi autentičnost pošiljatelja takve poruke, kao i potvrditi integritet
+poruke dekriptirajući digitalni potpis javnim ključem pošiljatelja i uspoređujući
+rezultat s izračunatim sažetkom primljene poruke dobivenim korištenjem istog
+matematičkog algoritma kojeg je primijenio i pošiljatelj. Prema tome,
+digitalni potpis osigurava autentičnost (identitet pošiljatelja utvrđuje se
+dešifriranjem sažetka poruke), integritet (provjerom sažetka poruke utvrđuje
+se je li se poruka mijenjala na putu do primatelja) i neporecivost (pošiljatelj
+ne može poreći sudjelovanje u transakciji jer jedino on ima pristup do svog
+privatnog ključa kojim je potpisao poruku).</span></p>
+<p class="MsoNormal"><b><span lang="HR" style="mso-ansi-language:HR">Digitalni
+pečat</span></b><span lang="HR" style="mso-ansi-language:HR">. Digitalni pečat
+je digitalno potpisana digitalna omotnica. Digitalnim potpisom nije osigurana
+tajnost poruke (poruku svatko može pročitati), ali su osigurani autentičnost,
+integritet i neporecivost. S druge strane, digitalnom omotnicom je osigurana
+samo tajnost. Digitalni pečat osigurava sva četiri sigurnosna zahtijeva:
+tajnost, autentičnost, integritet i neporecivost.</span></p>
+
+<p class="MsoNormal"><span style="mso-ansi-language: HR" lang="HR"><b>ZADATAK: </b></span>Ostvariti programe za izradu digitalne omotnice, digitalnog potpisa 
+te digitalnog pečata koristeći već gotove, slobodno dostupne algoritme.</p>
+
+
+
+</body></html>

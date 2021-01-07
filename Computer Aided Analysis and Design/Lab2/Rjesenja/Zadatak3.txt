@@ -1,0 +1,9 @@
+Zadatak 3.
+
+Funkcija 4: 	X0=[5, 5]
+Simpleks postupak po Nelderu i Meadu: 
+	Minimum je u tocki:  [0.0, 1e-06]
+	Broj evaluacija:  66
+Hooke-Jeeves postupak: 
+	Minimum je u tocki:  [5, 5]
+	Broj evaluacija:  19

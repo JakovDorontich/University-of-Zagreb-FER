@@ -1,0 +1,102 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="hr">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+<title>Vježba 5</title>
+</head>
+
+<body>
+
+<h3 style="margin-top: 0px; margin-bottom: 9px;">PROBLEM PUŠAČA CIGARETA</h3>
+<p style="margin-top: 0px; margin-bottom: 9px;">„Problem pušača cigareta“ 
+predstavio je Patil kako bi ukazao na problem sinkronizacije korištenjem 
+semafora. U ovom radu koristi se isti problem, ali različito rješenje radi 
+ilustracije nekih problema sa semaforima. </p>
+<p style="margin-top: 0px; margin-bottom: 9px;">U ovom slučaju sustav se sastoji 
+od tri dretve koje predstavljaju pušače te jedne dretve trgovca. Svaki od 
+„pušača“ ima kod sebe u neograničenoj količini jedan od tri sastojka potrebnih 
+da se napravi i zapali cigareta: papir, duhan ili šibice. Svaki pušač ima 
+različiti sastojak, tj. jedan ima samo papir, drugi duhan i treći samo šibice. 
+Trgovac ima sve tri komponente u neograničenim količinama. Trgovac nasumice 
+odabire dvije različite komponente, stavlja ih na stol te signalizira pušačima 
+da su sastojci na stolu. Jedino pušač kojemu nedostaju sastojci stavljeni na 
+stol, smije uzeti oba sastojka, signalizirati trgovcu te potom saviti cigaretu i 
+popušiti ju. Trgovac tada stavlja nova dva sastojka na stol i postupak se 
+ponavlja. </p>
+<p style="margin-top: 0px; margin-bottom: 9px;">Jedno od mogućih rješenja 
+sinkronizacije prikazano je u nastavku. Svaki pušač čeka na svom binarnom 
+semaforu, a trgovac pri stavljanju novih sastojaka postavlja sve semafore. Pušač 
+će tada samo jednom pogledati što ima na stolu, dok će u slijedećem pokušaju 
+biti blokiran dok god trgovac ne stavi nove sastojke.</p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">dretva Trgovac() {</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp; ponavljaj {</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (s1, s2) = 
+nasumice_odaberi_dva_različita_sastojka</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stavi_sastojke_na_stol(s1, s2)</font>
+</p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PostaviBSem(p1)</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PostaviBSem(p2)</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PostaviBSem(p3)</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ČekajBSem(stol_prazan)</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp; } do ZAUVIJEK</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">}</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">dretva Pušač(p) {</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp; (r1, r2) = sastojci_koje_pušač_nema(p)</font>
+</p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp; ponavljaj {</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ČekajBSem(p)</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ako (na_stolu_sastojci(r1, r2) = DA ) {</font>
+</p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; uzmi_sastojke(r1, r2)</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PostaviBSem(stol_prazan)</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; smotaj_zapali_puši()</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</font> </p>
+<p style="margin-top: 0px; margin-bottom: 3px;">
+<font size="2" face="Courier New">&nbsp;&nbsp; } do ZAUVIJEK</font> </p>
+<p style="margin-top: 0px; margin-bottom: 9px;">
+<font size="2" face="Courier New">}</font> </p>
+<h3>Zadatak</h3>
+<p>Osvariti sinkronizaciju 3 pušača i jednog trgovca korištenjem dretvi za 
+simulaciju svakog sudionika zasebno, te semafora korištenjem:
+<font face="Courier New" size="2">sem_init,</font>
+<font face="Courier New" size="2">sem_post </font>i
+<font face="Courier New" size="2">sem_wait</font> funkcija.</p>
+<h3>Primjer ispisa pokretanja programa</h3>
+<pre># ./a.out
+Pusac 1: ima papir
+Pusac 2: ima duhan
+Pusac 3: ima sibice
+
+Trgovac stavlja: papir i duhan
+Pusac 3: uzima sastojke i ...
+
+Trgovac stavlja: sibice i duhan
+Pusac 1: uzima sastojke i ...
+
+^C
+#</pre>
+
+</body>
+
+</html>

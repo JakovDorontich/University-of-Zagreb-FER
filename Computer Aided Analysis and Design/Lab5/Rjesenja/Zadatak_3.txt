@@ -1,0 +1,31 @@
+Zadatak 3.
+
+	Eulerov postupak:
+Rjesenje sustava (matrica):
+-8.633744591943909e-05 
+0.9999568338014916 
+
+	Obrnuti Eulerov postupak:
+Rjesenje sustava (matrica):
+-9.542208731925031e-05 
+0.9999522998626812 
+
+	Trapezni postupak:
+Rjesenje sustava (matrica):
+-9.070109476547183e-05 
+0.9999546322137396 
+
+	Runge-Kutta postupak 4.reda:
+Rjesenje sustava (matrica):
+-9.079367614032843e-05 
+0.9999546062536603 
+
+	Prediktor Euler, korektor obrnuti Euler, 2:
+Rjesenje sustava (matrica):
+-9.54152057134341e-05 
+0.9999522961628807 
+
+	Prediktor Euler, korektor Trapez, 1:
+Rjesenje sustava (matrica):
+-9.080891623288198e-05 
+0.9999545986378016 

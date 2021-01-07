@@ -1,0 +1,19 @@
+---BEGIN OS2 CRYPTO DATA---
+Description:
+    Crypted file
+
+Method:
+    DES3
+    CBC
+
+Key length:
+    0080
+
+Data:
+    YlzorZdTS1WvfSzNKiQ9x1BvZEPuAZzqB2UClmq+N73s8sr3M05JXpOE3S6C
+    5gU2190IdoL0+kzyYD2EXySd2U64YN9Rby+Fr5DtQiQIpHvoyC8A4C3BnlFA
+    gEljGFaVKw2w3I2NY/HXvvqyzp+6S74I1H5T1E8psfb9QTJF2mfl2Y+nj8jh
+    S/e9RFQdCjgHfU99s+BCvsD/Rmz2tcGquN4rYoyoDHCa9kU7r8bah/7UNkLU
+    +x6dK0sYK/oSiDvRiUqjTMVsQfO6WL7AoHyFoH6pzwjhfzQQ1InHJGVrM7c=
+
+---END OS2 CRYPTO DATA---

@@ -1,0 +1,48 @@
+Zadatak 1.
+	Eulerov postupak:
+Rjesenje sustava (matrica):
+-1.4538982142764794 
+-0.3106618221316094 
+Kumulativna pogreska:
+22.42969461702743
+23.64800341217901
+
+	Obrnuti Eulerov postupak:
+Rjesenje sustava (matrica):
+-1.3155480554684589 
+-0.28109997797673 
+Kumulativna pogreska:
+21.728702378573992
+22.82465217862355
+
+	Trapezni postupak:
+Rjesenje sustava (matrica):
+-1.383068565172373 
+-0.2951657907561595 
+Kumulativna pogreska:
+0.0386983914374704
+0.03681281767826274
+
+	Runge-Kutta postupak 4.reda:
+Rjesenje sustava (matrica):
+-1.38309263971035 
+-0.29505041933756837 
+Kumulativna pogreska:
+3.87597379910426e-07
+3.676111787753733e-07
+
+	Prediktor Euler, korektor obrnuti Euler, 2:
+Rjesenje sustava (matrica):
+-1.3155349281633861 
+-0.28109703543751624 
+Kumulativna pogreska:
+21.732969042431254
+22.829150399002405
+
+	Prediktor Euler, korektor Trapez, 1:
+Rjesenje sustava (matrica):
+-1.3831435232798397 
+-0.2948202740912988 
+Kumulativna pogreska:
+0.07751048744325723
+0.07352949871168402

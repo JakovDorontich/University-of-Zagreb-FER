@@ -1,0 +1,113 @@
+
+<!-- saved from url=(0067)http://www.zemris.fer.hr/predmeti/os2/komunikacija/z1_vrtuljak.html -->
+<html><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/prompt.js"></script><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/runScript.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+<meta http-equiv="Content-Language" content="hr">
+
+<title>Vrtuljak i redovi poruka</title>
+</head>
+
+<body>
+
+<h2>Vrtuljak</h2>
+<h3>Zadatak</h3>
+<p>Modelirati vrtuljak (ringišpil) s dva tipa procesa: procesima <i>posjetitelj</i> 
+(koje predstavljaju posjetitelje koji žele na vožnju) te jednim procesom <i>vrtuljak</i>. 
+Procesima <i>posjetitelj</i> se ne smije dozvoliti ukrcati na vrtuljak kada više 
+nema praznih mjesta (kojih je ukupno 4) te prije nego li svi prethodni 
+posjetitelji siđu. Vrtuljak se može pokrenuti tek kada je pun. Na početku glavni 
+proces, koji ujedno predstavlja proces vrtuljak, stvara 8 procesa <i>
+posjetitelja</i>. P<span style="border-collapse: separate; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; ">rocesi međusobno komuniciraju uz pomoć</span><span style="border-collapse: separate; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: 700; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"> 
+reda poruka</span><span style="border-collapse: separate; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; ">.
+</span></p>
+<p>
+<span style="border-collapse: separate; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; ">Ispravno
+</span>sinkronizirati 8 procesa <i>posjetitelja</i> i jednog procesa <i>vrtuljak</i> 
+koristeći <b>raspodijeljeni centralizirani protokol</b> gdje je proces <i>
+vrtuljak</i> čvor koji je odgovoran za međusobno isključivanje.</p>
+<p>Sve što u zadatku nije zadano, riješiti na proizvoljan način.</p>
+
+<p>&nbsp;</p>
+<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">Dretva 
+posjetitelj(K) {</span></p>
+<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm"><b>
+<span lang="HR" style="font-size: 10.0pt; font-family: Courier New; color: red">
+&nbsp;&nbsp; </span></b><font size="2"><b><span style="font-family: Courier New">
+ponavljaj 3 puta{</span></b></font></p>
+<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm"><font size="2"><span style="font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+spavaj X milisekundi; // X je slučajan broj između 100 i 2000</span></font></p>
+<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+pošalji vrtuljku poruku "Želim se voziti";</span></p>
+<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+<font size="2"><span style="font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+po ptimitku poruke "Sjedi" </span></font>
+<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">sjedni, 
+ispiši "Sjeo posjetitelj K" i čekaj;</span></p>
+<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+<font size="2"><span style="font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+po ptimitku poruke "Ustani" </span></font>
+<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">ustani, siđi 
+i ispiši "Sišao posjetitelj K";</span></p>
+<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">&nbsp;&nbsp; 
+}</span></p>
+<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+<font size="2"><span style="font-family: Courier New">&nbsp;&nbsp; ispiši i 
+pošalji poruku vrtuljku "Posjetitelj K završio."</span></font></p>
+<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">}</span></p>
+<div class="im" style="color: rgb(80, 0, 80); font-family: arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: -webkit-auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgba(255, 255, 255, 0.917969); ">
+	&nbsp;<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+	<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">Dretva 
+	vrtuljak() {</span></p>
+	<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+	<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">&nbsp;&nbsp; dok 
+	ima posjetitelja {</span></p>
+	<p class="MsoNormal" style="margin: 3.0pt 0cm">
+	<span style="font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; čekaj 
+	posjetitelje da zažele vožnju {</span></p>
+	<p class="MsoNormal" style="margin: 3.0pt 0cm">
+	<span style="font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	čekaj 4 poruke "Želim se voziti";</span></p>
+	<p class="MsoNormal" style="margin: 3.0pt 0cm">
+	<span style="font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	odgovori na svaku poruku porukom "Sjedi";</span></p>
+	<p class="MsoNormal" style="margin: 3.0pt 0cm">
+	<span style="font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></p>
+	<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+	<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">&nbsp;&nbsp; 
+	&nbsp;&nbsp;&nbsp;pokreni vrtuljak i ispiši "Pokrenuo vrtuljak";</span></p>
+	<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+	<span style="font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+	<font size="2"><span style="font-family: Courier New">spavaj X milisekundi; 
+	// X je slučajan broj između 1000 i 3000</span></font></p>
+	<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+	<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	zaustavi vrtuljak i ispiši "Vrtuljak zaustavljen";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pošalji posjetiteljima na vrtuljku poruku 
+	"Ustani"</span></p>
+	<p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+	<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">&nbsp;&nbsp; }</span></p><p class="MsoNormal" style="margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;
+margin-left:0cm">
+	<span lang="HR" style="font-size: 10.0pt; font-family: Courier New">}</span></p></div>
+
+
+
+
+</body></html>

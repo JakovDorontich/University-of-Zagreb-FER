@@ -1,0 +1,45 @@
+Zadatak 2.
+
+Funkcija 1: 	X0=[-1.9, 2]
+Pretraživanje po koordinatnim osima:
+	Minimum je u tocki:  [0.999718, 0.999436]
+	Broj evaluacija:  2776
+Simpleks postupak po Nelderu i Meadu: 
+	Minimum je u tocki:  [1.000067, 1.000194]
+	Broj evaluacija:  25
+Hooke-Jeeves postupak: 
+	Minimum je u tocki:  [0.999718, 0.999436]
+	Broj evaluacija:  20
+
+Funkcija 2: 	X0=[0.1, 0.3]
+Pretraživanje po koordinatnim osima:
+	Minimum je u tocki:  [4.0, 2.0]
+	Broj evaluacija:  3
+Simpleks postupak po Nelderu i Meadu: 
+	Minimum je u tocki:  [4.000643, 2.000105]
+	Broj evaluacija:  21
+Hooke-Jeeves postupak: 
+	Minimum je u tocki:  [4.0, 2.0]
+	Broj evaluacija:  19
+
+Funkcija 3: 	X0=[0, 0, 0, 0, 0]
+Pretraživanje po koordinatnim osima:
+	Minimum je u tocki:  [1.0, 2.0, 3.0, 4.0, 5.0]
+	Broj evaluacija:  3
+Simpleks postupak po Nelderu i Meadu: 
+	Minimum je u tocki:  [0.999832, 2.000038, 3.000424, 3.999801, 4.999979]
+	Broj evaluacija:  97
+Hooke-Jeeves postupak: 
+	Minimum je u tocki:  [1.0, 2.0, 3.0, 4.0, 5.0]
+	Broj evaluacija:  19
+
+Funkcija 4: 	X0=[5.1, 1.1]
+Pretraživanje po koordinatnim osima:
+	Minimum je u tocki:  [1.1, 1.1]
+	Broj evaluacija:  2
+Simpleks postupak po Nelderu i Meadu: 
+	Minimum je u tocki:  [2e-06, 2e-06]
+	Broj evaluacija:  43
+Hooke-Jeeves postupak: 
+	Minimum je u tocki:  [1.1, 1.1]
+	Broj evaluacija:  19

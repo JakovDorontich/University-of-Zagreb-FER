@@ -1,0 +1,96 @@
+CT_cmd	EQU		0FFFF0000		;Definiramo lokacije za CT, "cmd" kao command.
+CT_LR	EQU		0FFFF0004
+CT_bis	EQU		0FFFF0008
+CT_end	EQU		0FFFF000C		;zove se i iack, ali ja ga zovem end jer on regulira kraj 1 ciklusa.
+
+DMA_src	EQU		0FFFF1000		;Definiramo lokacije za DMA.
+DMA_dst	EQU		0FFFF1004		;"dst" kao destination
+DMA_cnt	EQU		0FFFF1008
+DMA_cmd	EQU		0FFFF100C
+DMA_go	EQU		0FFFF1010
+DMA_bis	EQU		0FFFF1014
+
+BVJ_dat	EQU		0FFFFFFFC
+
+
+
+		ORG		0
+		MOVE	10000, SP		;Inicijalizacija stoga.
+		JP		MAIN
+		
+		
+		
+		ORG		0C				;Tu pocinje prekidni nemaskirajuci prekidni potprogram.
+		PUSH	R0				;Spremamo kontekst, ali i SR naposlijetku.
+		PUSH	R1
+		MOVE	SR, R0
+		PUSH	R0
+		
+		STORE	R0, (DMA_bis)	;Javljamo DMA da smo skuzili prekid.
+		
+		LOAD 	R0, (LOC)		;Ucitavamo memorijsku lokaciju na koju smo poceli upisivati blok podataka.
+		ADD 	R0, %D 40, R0	;Dodajemo joj 40 (jer nakon 10 4-bajtnih podataka nova lokacija je 40 mjesta u memoriji dalje).
+		MOVE 	-1, R1			;Stavljamo -1 u R1.
+		STORE 	R1, (R0-4)		;Stavljamo R1 (-1) u ono što je na lokaciji R0-4. Kako R0 sadrzava adresu novog bloka, 4 bajta iza njega je mjesto gdje trebamo upisati -1.
+		STORE 	R0, (LOC)		;Upisujemo lokaciju novog bloka na mem. lokaciju koja sadrzi trenutni pocetak novog bloka.
+		
+		LOAD 	R0, (BLOKOVI)	;U R0 ucitavamo broj prenesenih blokova.
+		ADD 	R0, 1, R0		;Povecamo taj broj za 1 jer smo upravo zavrsili s prijenosom jednog bloka,
+		STORE 	R0, (BLOKOVI)	;te to natrag upisujemo na mem. lokaciju BLOKOVI.
+		
+		STORE 	R0, (DMA_END)	;Kako smo sav posao obavili, custom adresi javljamo kraj posluzivanja tako da upisujemo R0 u nju.
+								;Kako ce R0 uvijek biti neki prirodni broj (dakle, razlicit od 0), stedimo ciklus jer ne postavljamo R0 u neki broj.
+		POP		R0				;Obnavljamo kontekst, s tim da se SR obnavlja prvi.
+		MOVE	R0, SR
+		POP		R1
+		POP		R0
+		RETN					;Izlazimo iz nemaskirajuceg prekidnog potprograma (N je vazno).
+		
+		
+		
+MAIN	MOVE	%B 001, R0 		;Zapocinjemo glavni program inicijalizacijom CT i DMA.
+		STORE	R0, (CT_cmd)	;001 kaze CT da ne generira nikakav prekid, te da udje u stanje brojanja.
+		MOVE	%D 1000, R0		;Ako CPU radi na 10 MHz, titra 10,000,000 puta u sekundi. U 1 sekunda sastoji se od 1000 ms, tj. 1,000,000 mis, pa to znaci da u 1 mis postoji 10 titraja.
+		STORE	R0, (CT_LR)		;Tih 10 titraja onda pomnozimo sa 100 (jer ima 100 mis po prekidu), te dobijemo da u counter stavljamo 1000, jer postoji 1000 titraja u 100 mis.
+		
+		MOVE	%B 0111, R0		;Kontrolni kod 0111 oznacava da prenosime podatke u memoriju iz vanjske jedinice kradjom ciklusa te postavljamo prekid.
+		STORE	R0, (DMA_cmd)	;Taj broj cemo staviti na mem. lokaciju DMA_cmd.
+		
+IS_DONE	LOAD	R0, (BLOKOVI)	;Provjeravamo jesmo li gotovi sa prijenosom 5 blokova.
+		CMP		R0, 5			;Dakle, usporedjujemo broj iz mem. adrese BLOKOVI s 5,
+		JP_Z	FINISH			;i ako je on jednak 5, idemo na kraj, tj. na labelu FINISH.
+		
+RDY_CHK	LOAD	R0, (CT_bis)	;Ako nismo gotovi s prijenosom 5 blokova, onda provjeravamo je li brojac izbrojio 100 mis
+		ADD		R0, 0, R0		;dodamo tom broju 0 da postavimo zastavice (tj. ne mijenjamo ga),
+		JP_Z	RDY_CHK			;te ako brojac nije izbrojao do 1000, vrtimo petlju opet, i tako sve dok brojac ne izbroji 100 mis.
+		
+		STORE	R0, (CT_bis)	;Brojac je izbrojao 100ms, pa mu javljamo da smo shvatili da je gotov resetiranjem bistabila stanja CTa.
+		
+		MOVE 	BVJ_dat, R0		;Sada cemo adresu izvora staviti na R0,
+		LOAD	R1, (LOC)		;adresu odredista na R1,
+		MOVE	9, R2			;a broj podataka u bloku na R2.
+								;Inace sve smo ovo mogli pomocu 1 registra, ali ovo je mrvicu efikasnije i preglednije, a dopusteno je.
+		STORE	R0, (DMA_src)	;Sada sve te podatke stavljamo na odgovarajuce komponente DMA.
+		STORE	R1, (DMA_dst)
+		STORE 	R2, (DMA_cnt)
+		STORE	R0, (DMA_go)	;A nakon ucitavanja parametara u DMA ga pokrecemo slanjem bilo kakvog podatka na (DMA_go).
+		
+COPIED	LOAD	R0, (DMA_END)	;Ovom petljom provjeravamo je li DMA gotov. Naime, DMA prekida procesor, ali ovim osiguravamo da nesto drugo nije napravilo problem.
+		CMP		R0, 0			;Mogli smo provjeravati i je li na 10. mjesto upisan -1 (jer netaknuta memorija je po defaultu 0), ali opet bi trebali varijablu u memoriji, pa je ovo preglednije.
+		JR_Z 	COPIED			;Najoptimiziranije bi bila uporaba globalnog registra koje okrugli stol ARHa1 hejta.
+		
+		MOVE	0, R0			;Stavljamo 0 u R0 jer bas nju i trebamo (naravno ovog ne bi bilo bez da DMA_END ne treba 0 specificno da FRISC misli da DMA nije gotov s poslom, moglo bi se ovo rijesiti alternirajucom vrijednosti).
+		STORE	R0, (DMA_END)	;Dakle, kazemo DMA_END (memoriji, velika slova indiciraju da nije dio DMA!!!) da smo shvatili da je kopirano, te priprema za sljedeci prijenos (ako ga ima).
+		STORE	R0, (CT_end)	;Usput, dojavljujemo CT da je gotov s 1 ciklusom, te da nastavi.
+		JP		IS_DONE			;Vracamo se na provjeru onih 5 blokova.
+		
+FINISH	MOVE	0, R0			;Sad kad smo gotovi, stavljamo 0 u R0. Elegantnije bi bilo R0 -= 5, ali taj broj blokova je promijenjiv.
+		STORE	R0, (CT_cmd)	;Postavljanjem oba CRa u 0 kao da smo javili i CT i DMA da su gotovi s poslom.
+		STORE	R0, (DMA_cmd)
+		HALT					;Jos samo trebamo ugasiti FRISC, sto i cinimo.
+
+		
+		
+BLOKOVI	DW		0
+DMA_END	DW		0				;Varijabla koja govori FRISCu u DMA stadiju - 0 znaci da nije gotov, sve ostalo znaci da je gotov.
+LOC		DW		1000			;"LOC" kao location.

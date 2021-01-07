@@ -1,0 +1,11 @@
+Zadatak 3.
+
+Funkcija 1: 	X0=[-1.9, 2]
+Postupak po Boxu:
+	Minimum je u tocki:  [0.010058310664373446, 0.010058386277962296]
+	Vrijednost funkcije cilja u tocki:  0.9898991646551359
+
+Funkcija 2: 	X0=[0.1, 0.3]
+Postupak po Boxu:
+	Minimum je u tocki:  [1.9999806949195877, 2.017874566639991]
+	Vrijednost funkcije cilja u tocki:  4.001355221224606

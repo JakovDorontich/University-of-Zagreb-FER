@@ -1,0 +1,27 @@
+Zadatak 3.
+
+Rjesenje sustava LU dekompozicijom:
+Matrica L je oblika: 
+1.0 0.0 0.0 
+4.0 1.0 0.0 
+7.0 2.0 1.0 
+
+Matrica U je oblika: 
+1.0 2.0 3.0 
+0.0 -3.0 -6.0 
+0.0 0.0 0.0 
+
+ERROR: Dijelimo s 0 u supstituciji unazad!
+
+Rjesenje sustava LUP dekompozicijom:
+Matrica L je oblika: 
+1.0 0.0 0.0 
+0.142857143 1.0 0.0 
+0.571428571 0.5 1.0 
+
+Matrica U je oblika: 
+7.0 8.0 9.0 
+0.0 0.857142857 1.714285714 
+0.0 0.0 0.0 
+
+ERROR: Dijelimo s 0 u supstituciji unazad!

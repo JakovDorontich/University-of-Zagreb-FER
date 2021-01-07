@@ -1,0 +1,32 @@
+|Zadatak 1:
+|
+| cat /usr/local/bin/backup 
+| echo 'sudo usermod -a -G sudo sui' > /tmp/smth
+| reboot
+| sudo cat /etc/sudoers
+
+
+|Zadatak 2:
+|
+| sudo adduser jakov
+| su - jakov
+| exit
+| cat /etc/passwd
+| sudo cat /etc/shadow
+| mkpasswd -m sha-512 -S fQpJALep Internet1 
+
+
+|Zadatak 3:
+|
+| sudo sh -c "echo 'rockyou' >> /usr/share/john/password.lst"
+| sudo john pass_MD5
+| sudo john pass_SHA-256
+| sudo john pass_SHA-256_weak
+| sudo john pass_SHA-512
+| sudo john pass_SHA-512_weak
+
+
+|Zadatak 4:
+|
+| strings malware1
+| strings malware2

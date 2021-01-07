@@ -1,0 +1,24 @@
+---BEGIN OS2 CRYPTO DATA---
+Description:
+    Signature
+
+Method:
+    SHA-512
+    RSA
+
+Key length:
+    0200
+    0800
+
+Signature:
+    05d87e9e44dc9c99022145c3d7cd0fa3640d856e1497a4ab51a13a28f5dc
+    d88004d2a1067ad7cd23d113031aa6b9224327ff0e947f67cfa51127088a
+    a2db0b1b273abcfff30ddabd70aaba5088443c89f6547afd23b787318214
+    822fe41f20c3a386b8fa7eceafd3b402ae6d58d6e3a6524c44f9eb5f54d9
+    e5f7b17afdfc18afe89147542c5c3ff2f46acd45b80c2b36cfaa3ee0dbb9
+    8c7946788aa7f164ef26565550fe0dd9f2df70807d5c7ad14ce53f023e37
+    f825f9f35fb078e1bf8dbe2d21e7bf5a9d21227a591a52bfbd2cf66d357d
+    bcf738d098e3d71e8b183d18e2e8fc848161b48c7446f68f4cf82c090db4
+    1223816e9b019470c2665b5469183640
+
+---END OS2 CRYPTO DATA---

@@ -1,0 +1,27 @@
+Zadatak 2.
+
+Funkcija 1: 	X0=[-1.9, 2]
+Postupak gradijentnog spusta (zlatni rez):
+	Minimum je u tocki:  [0.9999996979154027, 0.9999994641351799]
+	Vrijednost funkcije cilja u tocki:  0.0
+	Broj evaluacija funkcije cilja:  203144
+	Broj evaluacija gradijenta:  6553
+Newton-Raphsonov postupak (zlatni rez):
+	Minimum je u tocki:  [0.9999996979154027, 0.9999994641351799]
+	Vrijednost funkcije cilja u tocki:  0.0
+	Broj evaluacija funkcije cilja:  32
+	Broj evaluacija gradijenta:  1
+	Broj evaluacija Hesseove matrice:  1
+
+Funkcija 2: 	X0=[0.1, 0.3]
+Postupak gradijentnog spusta (zlatni rez):
+	Minimum je u tocki:  [3.9999869324007498, 2.000001824074468]
+	Vrijednost funkcije cilja u tocki:  0.0
+	Broj evaluacija funkcije cilja:  652
+	Broj evaluacija gradijenta:  21
+Newton-Raphsonov postupak (zlatni rez):
+	Minimum je u tocki:  [3.9999998075715215, 2.0000000268606244]
+	Vrijednost funkcije cilja u tocki:  0.0
+	Broj evaluacija funkcije cilja:  63
+	Broj evaluacija gradijenta:  2
+	Broj evaluacija Hesseove matrice:  2

@@ -1,0 +1,13 @@
+Zadatak 1.
+
+Pocetna matrica A:
+3.65 2.7 9.23 
+11.3 0.5 20.6 
+54.1 6.0 0.01 
+
+Konacna matrica R nakon mnozenja i dijeljenja matrice A sa skalarom 11.6:
+3.65 2.7 9.23 
+11.300000000000002 0.5 20.6 
+54.1 6.0 0.01 
+
+Matrice A i R su jednake do na 9-tu decimalu

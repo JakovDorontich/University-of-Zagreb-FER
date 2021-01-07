@@ -1,0 +1,440 @@
+
+<!-- saved from url=(0064)http://www.zemris.fer.hr/predmeti/os2/komunikacija/cjevovod.html -->
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/prompt.js"></script><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/runScript.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 9">
+<meta name="Originator" content="Microsoft Word 9">
+<title>Cjevovodi</title>
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>BestFit</w:Zoom>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:1246769963;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1565061254 -841446524 -430509554 -1348068130 -855478212 391157716 899965822 1852225100 753416628 -52686018;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<meta name="Template" content="D:\MSOFFICE\OFFICE\html.dot">
+</head>
+
+<body lang="EN-GB" link="blue" vlink="purple" style="tab-interval:36.0pt">
+
+<div class="Section1">
+
+<p align="center" style="text-align:center"><b><span style="font-size:18.0pt">CJEVOVODI
+I IMENOVANI CJEVOVODI<o:p></o:p></span></b></p>
+
+<p><b>CJEVOVODI<o:p></o:p></b></p>
+
+<p>Općenito se procesi povezuju cjevovodom na slijedeći način:</p>
+
+<ol start="1" type="1">
+ <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt">Napraviti cjevovod.</li>
+ <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt">Napraviti proces dijete
+     koji će čitati.</li>
+ <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt">U djetetu zatvoriti kraj
+     cjevovoda na kojeg se piše i obaviti druge pripreme ako je potrebno.</li>
+ <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt">Izvršiti program za dijete
+     koje čita.</li>
+ <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt">U roditelju zatvoriti kraj
+     cjevovoda s kojeg se čita i obaviti druge pripreme ako je potrebno.</li>
+ <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt">Ako drugo dijete treba
+     pisati u cjevovod, stvoriti proces i izvršiti program.</li>
+ <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo3;tab-stops:list 36.0pt">Ako roditelj treba pisati,
+     neka piše. </li>
+</ol>
+
+<p>Čitanje i pisanje u cjevovod je slično radu s običnim datotekama, ali
+postoje i bitne razlike. Pisanje i čitanje se odvija po principu FIFO-redova:
+čitač čita redom kojim je pisač zapisivao. Ako čitač isprazni cjevovod on čeka
+podatke, a ako pisač popuni cjevovod on mora čekati dok ga čitač malo ne
+isprazni i oslobodi mjesto u cjevovodu. Svaki pročitani znak više ne postoji u
+cjevovodu i može se vratiti samo tako da ga pisač ponovo upiše.</p>
+
+<p>Osnovni nedostatak komuniciranja preko cjevovoda je da procesi moraju biti povezani,
+na primjer roditelj i dijete. Cjevovod se ne može kreirati nakon što su procesi
+već stvoreni, zato što proces koji stvara cjevovod ne može prenjeti opisnik
+datoteke drugom procesu. Opisnici datoteka se prenose samo kod kreiranja
+procesa djeteta. Zato se prvo stvori cjevovod, a zatim kreira dijete koje će
+naslijediti opisnik datoteka cjevovoda. Procesi koji komuniciraju preko
+cjevovoda mogu biti roditelj i dijete, ili dvoje djece, ili "djed" i
+"unuk". Važno je samo da su u "srodstvu" i da je cjevovod
+prenesen kod "rođenja".</p>
+
+<p>Cjevovodi koriste međuspremnike (<i>buffer cache</i>) veličine jednog bloka
+(obično 512 bajtova) kao i obične datoteke, što se može iskoristiti za
+povećanje efikasnosti rada. Svakim pozivom <i>write </i>moguće je upisati jedan
+blok podataka. Ako pisač ne piše kompletne blokove, a čitač pokušava čitati
+cijeli blok, čitač će dobivati nekompletne blokove. Ali ako je pisač brži od
+čitača onda će čitač ipak čitati kompletne blokove.</p>
+
+<p>Korisnici mogu upotrebljavati cjevovode pozivima naredbi iz komandne linije,
+na primjer:</p>
+
+<p align="center" style="text-align:center"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">ls | wc<o:p></o:p></span></p>
+
+<p>Tok podataka ima samo jedan smjer, od <i>ls</i> prema <i>wc</i>.</p>
+
+<p><b>Sustavski pozivi i funkcije za rad sa cjevovodima<o:p></o:p></b></p>
+
+<p>Cjevovod je predstavljen s dva opisnika datoteka a kreira se sustavskim
+pozivom <i>pipe</i>:</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int pipe(int
+fd[2]);<o:p></o:p></span></p>
+
+<p>Ako je uspješno izvršen, <i>pipe</i> vraća 0, a u slučaju greške -1. <i>fd[1]</i>
+je deskriptor ulazne strane cjevovoda. Pisanjem u njega stavljaju se podaci u
+cjevovod, a čitanje iz<i> fd[0]</i> (deskriptor izlazne strane cjevovoda) vadi
+podatke van. Dobiveni deskriptori mogu se koristiti u pozivima za rad s
+datotekama: <i>close</i>, <i>dup</i>, <i>fcntl</i>, <i>fstat</i>, <i>read</i>, <i>write</i>.
+Izuzetak je <i>lseek</i> jer se cjevovodu može pristupati samo sekvencijalno
+(FIFO).</p>
+
+<p><span style="font-size:7.5pt">&nbsp;</span><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">int close(int fd);<o:p></o:p></span></p>
+
+<p>zatvara opisnik datoteke <i>fd</i>. Rezultat je 0, ili -1 u slučaju greške.</p>
+
+<p><span style="font-size:7.5pt">&nbsp;</span>U radu s cjevovodima često je
+potrebno duplicirati postojeće opisnike datoteka (da bi se cjevovod povezao na
+standardni ulaz ili izlaz, da bi se opisnici za standardni ulaz i izlaz mogli
+spremiti i vratiti nakon zatvaranja cjevovoda, itd.). Za dupliciranje opisnika
+datoteka služi sustavski poziv <i>dup</i>:</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int dup(int fd);<o:p></o:p></span></p>
+
+<p><i>dup</i> kopira postojeći opisnik datoteke <i>fd </i>i vraća novi opisnik
+datoteke ili -1 u slučaju greške. Poziv ne uspjeva, na primjer ako <i>fd</i>
+nije otvoren ili je već otvoren maksimalan broj opisnika datoteka (obično 20).
+Novi opisnik datoteke ima drugačiji broj od originalnog! Pravilo je da se kod
+otvaranja bilo kojeg novog opisnika datoteke uzima najmanji slobodni broj (to
+vrijedi i kod <i>open</i> i <i>pipe</i>). Najmanji brojevi 0, 1 i 2 su opisnici
+standardnog ulaza, standardnog izlaza i standardnog izlaza za greške.</p>
+
+<p>Koristeći to pravilo, kraj cjevovoda iz kojeg se može čitati se povezuje kao
+standardni ulaz na slijedeći način: zatvori se opisnik datoteke 0 i duplicira
+se opisnik kraja za čitanje cjevovoda. <i>dup</i> će vratiti opisnik datoteke
+0. Ako se zatim pokrene proces koji čita standardni ulaz, on će čitati iz
+cjevovoda. (Prethodno treba zatvoriti polazni opisnik kraja za čitanje
+cjevovoda ako ovaj više nije potreban.) Slično se postiže da opisnik datoteke 1
+(standardni izlaz) bude kraj za pisanje u cjevovod. Na taj način ljuska
+povezuje procese koje korisnik poziva sa:</p>
+
+<p align="center" style="text-align:center"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">proc1 | proc2<o:p></o:p></span></p>
+
+<p>Ako kasnije treba restaurirati opisnike datoteka za standardni ulaz i izlaz,
+onda ih je potrebno prvo duplicirati i zapamtiti tako dobivene opisnike. Tada se
+opisnici 0 i 1 mogu zatvoriti i zamijeniti, a kada ih je potrebno vratiti,
+primjenjuje se isti postupak za zamjenu opisnika. Na primjer, za restauraciju
+standardnog ulaza prvo se zatvara opisnik 0, a zatim se duplicira prije
+dobivena kopija standardnog ulaza. (Nakon toga se kopija može zatvoriti.)</p>
+
+<p><span style="font-size:7.5pt">&nbsp;<o:p></o:p></span></p>
+
+<p>Ponekad izbor najnižeg slobodnog broja za opisnik nove datoteke nije
+poželjan. Tada se umjesto <i>dup</i> može koristiti <i>fcntl</i> na slijedeći
+način:</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int fcntl(fd, cmd,
+arg);<o:p></o:p></span></p>
+
+<p><i>fd</i> je deskriptor kojega se duplicira. <i>cmd</i> treba biti <span style="font-family:&quot;Courier New&quot;">F_DUPFD</span>, a odabrat će se novi
+deskriptor veći ili jednak <i>arg</i>.</p>
+
+<p><span style="font-size:7.5pt">&nbsp;<o:p></o:p></span></p>
+
+<p>BSD UNIX (ali ne i System V) ima još i poziv:</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int dup2(int oldd,
+int newd);<o:p></o:p></span></p>
+
+<p>Deskriptor <i>oldd</i> se duplicira u <i>newd</i>. Ako je <i>newd</i> već
+bio zauzet, on se prethodno zatvara. Rezultat je <i>newd</i> ili -1 u slučaju
+greške.</p>
+
+<p><span style="font-size:7.5pt">&nbsp;</span>Čitanje i pisanje se provodi
+pozivima read i write kao i kod običnih datoteka:</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int read(int fd,
+char *buf, unsigned nbyte);<o:p></o:p></span></p>
+
+<p>pokušava pročitati <i>nbyte</i> znakova iz datoteke s opisnikom <i>fd</i> na
+adresu spremnika <i>buf</i>. Rezultat je broj stvarno pročitanih znakova (koji
+može biti manji od <i>nbyte</i>). U slučaju greške, rezultat je -1.</p>
+
+<p>Ako je cjevovod prazan, <i>read</i> će čekati. Međutim, neće nužno čekati
+dok ne bude prisutno <i>nbytes</i> znakova nego će vratiti onoliko znakova
+koliko je prisutno u cjevovodu (ako ih ima manje od <i>nbytes</i>). <i>read</i>
+će vratiti znak kraja datoteke (rezultat 0) samo kada se zatvori opisnik kraja
+za pisanje u cjevovod.</p>
+
+<p><span style="font-size:7.5pt">&nbsp;</span><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">int write(int fd, char *buf, unsigned nbyte);<o:p></o:p></span></p>
+
+<p>pokušava zapisati <i>nbyte</i> znakova iz spremnika <i>buf</i> u datoteku <i>fd</i>.
+Rezultat je broj stvarno zapisanih znakova ili -1 u slučaju greške.</p>
+
+<p>Ako se cjevovod napuni, <i>write</i> čeka dok se ne oslobodi prostor. <i>write</i>
+se neće djelomično obaviti već će čekati dok ne bude dovoljno mjesta za svih <i>nbyte</i>
+znakova. Kapacitet cjevovoda je tipično 5120 znakova (10 blokova). Ako se
+zatvori opisnik kraja za čitanje iz cjevovoda, <i>write</i> će završiti s
+greškom.</p>
+
+<p><span style="font-size:7.5pt">&nbsp;</span>Pozivi <i>read</i> i <i>write</i>
+se rijetko upotrebljavaju izravno u programima jer C ima bogatu biblioteku
+praktičnijih funkcija za pristup datotekama (<i>fread</i>, <i>fwrite</i>, <i>printf</i>,
+<i>scanf</i>, itd.). Međutim, te funkcije ne rade sa opisnicima datoteka već sa
+kazaljkama na strukturu koja opisuje datoteku. Ta kazaljka se za obične
+datoteke dobiva funkcijom <i>fopen</i> (vidi <span style="font-family:&quot;Courier New&quot;">man
+fopen</span>), ali se može dobiti i iz opisnika datoteke funkcijom <i>fdopen</i>:</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">FILE *fdopen(int
+fd, char *type);<o:p></o:p></span></p>
+
+<p>vraća kazaljku na strukturu koja opisuje datoteku za opisnik datoteke <i>fd</i>.
+U slučaju greške rezultat je <span style="font-family:&quot;Courier New&quot;">NULL</span>.
+<i>type</i> je niz znakova koji opisuje način pristupa datoteci i mora
+odgovarati načinu na koji je otvoren opisnik datoteke <i>fd</i>:</p>
+
+<p style="margin-left:144.0pt"><span style="font-family:&quot;Courier New&quot;">"r"</span>čitanje</p>
+
+<p style="margin-left:144.0pt"><span style="font-family:&quot;Courier New&quot;">"w"</span>pisanje</p>
+
+<p>Ovo nije potrebno raditi ako se cjevovod povezuje na standardni ulaz ili
+izlaz jer uvijek postoje kazaljke <i>stdin</i>, <i>stdout</i> i <i>stderr</i>
+za standardni ulaz, standardni izlaz i standardni izlaz za poruke o greškama.</p>
+
+<p><b>Primjer korištenja cjevovoda<o:p></o:p></b></p>
+
+<p>Ovo je jednostavan primjer korištenja cjevovoda za prenošenje poruke iz
+jednog procesa u drugi. Proces prvo stvara cjevovod, a zatim jedno dijete.
+Dijete naslijeđuje sve podatke i opisnike, pa tako i cjevovod. Taj proces zatvara
+opisnik za pisanje u cjevovod i čita jednu poruku iz cjevovoda koju zatim
+ispisuje. S druge strane, roditelj, nakon kreiranja djeteta, zatvara opisnik za
+čitanje u cjevovod. Zatim šalje poruku cjevovodom i čeka da dijete završi.</p>
+
+<p>Zbog jednostavnosti, uglavnom se ne provjerava je li došlo do grešaka kod
+pojedinih poziva. Upotrijebljeni opisnici cjevovoda se ne zatvaraju jer to
+ionako radi <i>exit</i>.</p>
+
+<p class="MsoNormal" style="margin-left:36.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">#include &lt;stdio.h&gt;<br>
+#include &lt;string.h&gt;<br>
+#define MAXREAD 20/* <i>najveća duljina poruke</i>*/<br>
+int main(void)<br>
+{ <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:72.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">int pfd[2];<br>
+char buf[MAXREAD] = "";<br>
+char message[] = "Kroz cijev!";/* <i>poruka</i>*/<br>
+if (pipe(pfd) == -1)/* <i>stvaranje cjevovoda</i>*/<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:108.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">exit(1);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:72.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">switch (fork()) {<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:108.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">case -1: /* <i>dijete nije kreirano</i>*/<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:144.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">exit(1);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:108.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">case 0:/* <i>dijete čita</i> */<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:144.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">close(pfd[1]);/* <i>zato zatvara kraj za pisanje</i>*/<br>
+(void) read(pfd[0], buf, MAXREAD);<br>
+puts(buf);<br>
+exit(0);<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:108.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">default:/* <i>roditelj piše</i> */<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:144.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">close(pfd[0]);/* zato zatvara kraj za čitanje*/<br>
+(void) write(pfd[1], message, strlen(message) + 1);<br>
+wait(NULL);/* roditelj čeka da dijete završi*/<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:108.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">}<br>
+exit(0);/* <i>zatvara sve deskriptore</i> */<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:72.0pt"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">}<o:p></o:p></span></p>
+
+<p><b>IMENOVANI CJEVOVODI<o:p></o:p></b></p>
+
+<p>Imenovani cjevovodi (FIFO redovi) su kombinacija datoteka i cjevovoda. Oni
+imaju svoje ime i mjesto u sustavu datoteka, ali su označeni kao posebna vrsta
+datoteka (oznaka <span style="font-family:&quot;Courier New&quot;">p</span> - <i>pipe</i>).
+Pristupa im se korištenjem imena, kao i datotekama, pa procesi ne moraju biti u
+srodstvu da bi komunicirali preko njih. Imenovani cjevovod je potrebno prvo
+kreirati sustavskim pozivom mknod, a zatim ga treba otvoriti dva puta: jednom
+za čitanje, a jednom za pisanje. Ovisno o načinu pristupa navedenom kod
+otvaranja datoteke, proces otvara kraj za čitanje ili kraj za pisanje
+imenovanog cjevovoda. Nakon što su otvoreni s njima se radi kao s cjevovodima.
+Kapacitet imenovanih cjevovoda ovisi o implementaciji.</p>
+
+<p>Kad se imenovani cjevovod otvara za čitanje, <i>open </i>čeka dok ga neki
+drugi proces ne otvori i za pisanje. Vrijedi i obrnuto. To dozvoljava procesima
+da se sinkroniziraju prije nego počne prenošenje bilo kakvih podataka.</p>
+
+<p>S druge strane, kada je u <i>open</i> za čitanje postavljena zastavica <span style="font-family:&quot;Courier New&quot;">O_NDELAY</span>, on neće čekati odgovarajući <i>open</i>
+za pisanje, a kada je postavljena u <i>open</i> za pisanje, on će vratiti
+grešku ako niti jedan čitač nema otvoren isti imenovani cjevovod. Svrha ovoga
+je da procesi ne pišu u cjevovode koje u tom trenutku nitko ne čita zato što
+UNIX ne sprema podatke u njih trajno. Ako u imenovanom cjevovodu ostanu podaci
+nakon zatvaranja svih opisnika datoteka koji su s njim povezani, bit će
+izgubljeni bez dojave greške.</p>
+
+<p>Ako zastavica <span style="font-family:&quot;Courier New&quot;">O_NDELAY</span> nije
+postavljena, <i>read</i> se zablokira kada nema podataka u imenovanom
+cjevovodu, a <i>write</i> se zablokira ako je prepunjen. Ako je zastavica
+postavljena, ni r<i>ead</i> ni <i>write</i> se ne zablokiraju nego jave grešku.</p>
+
+<p><b>Sustavski pozivi za rad sa imenovanim cjevovodima<o:p></o:p></b></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int mknod(char
+*path, int mode, int dev);<o:p></o:p></span></p>
+
+<p>stvara novu datoteku čiji put (uključujući i ime) je <i>path</i>. Ovaj poziv
+je rezerviran za superkorisnika, osim u slučaju stvaranja imenovanog cjevovoda
+kada <i>mode</i> mora biti kombinacija zastavice <span style="font-family:&quot;Courier New&quot;">S_IFIFO</span>
+(oktalno 0010000, definirano u <span style="font-family:&quot;Courier New&quot;">&lt;sys/stat.h&gt;</span>)
+i dozvola pristupa u donjih 9 bitova, a <i>dev</i> nije bitno). Rezultat je 0,
+osim u slučaju greške kada je -1.</p>
+
+<p><span style="font-size:7.5pt">&nbsp;<o:p></o:p></span></p>
+
+<p>Korisnik može stvoriti imenovani cjevovod naredbom:</p>
+
+<p align="center" style="text-align:center"><span style="font-size:10.0pt;
+font-family:&quot;Courier New&quot;">/etc/mknod ime p<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int open(char
+*path, int flags [, int mode] );<o:p></o:p></span></p>
+
+<p><i>path</i> pokazuje na put (s imenom) datoteke. <i>flags</i> je neka
+kombinacija zastavica definiranih u <span style="font-family:&quot;Courier New&quot;">&lt;fcntl.h&gt;</span>:</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">O_RDONLY
+</span>otvori za čitanje;</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">O_WRONLY
+</span>otvori za pisanje;</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">O_RDWR
+</span>otvori za čitanje i pisanje;</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">O_NDELAY
+</span>utječe na postupak otvaranja i kasniji rad sa <i>read</i> i <i>write</i>
+- ako se operacija ne može obaviti bez čekanja, nema čekanja nego se vraća
+greška;</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">O_APPEND
+</span>dodavanje na kraj datoteke;</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">O_SYNC
+</span>write će čekati sve dok podaci ne budu stvarno zapisani na disk;</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">O_CREAT
+</span>ako datoteke nema, kreira se nova sa pravima pristupa danim u <i>mode</i>;</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">O_TRUNC
+</span>ako datoteka postoji, njen sadržaj se briše;</p>
+
+<p style="margin-left:36.0pt"><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">O_EXCL
+</span>ne dozvoljava korištenje postojeće datoteke ako je postavljeno <span style="font-family:&quot;Courier New&quot;">O_CREAT </span>.</p>
+
+<p>Ako je datoteka (ili imenovani cjevovod) uspješno otvorena, <i>open</i>
+vraća opisnik datoteke (uvijek najmanji koji može). U slučaju greške, rezultat
+je -1.</p>
+
+<p><span style="font-size:7.5pt">&nbsp;<o:p></o:p></span></p>
+
+<p>Neke od zastavica postavljenih kod otvaranja, mogu se u kasnijem radu
+mijenjati korištenjem sustavskog poziva <i>fcntl</i> (vidi <span style="font-family:&quot;Courier New&quot;">man fcntl</span>):</p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Courier New&quot;">int fcntl(int fd,
+int cmd, int arg);<o:p></o:p></span></p>
+
+<p><i>fd</i> je opisnik datoteke, <i>cmd</i> treba biti <span style="font-family:
+&quot;Courier New&quot;">F_SETFL</span>, a <i>arg</i> kombinacija zastavica koja se
+postavlja. Smatra se da je poziv uspio ako je rezultat različit od -1, ali se
+samo neke zastavice mogu mijenjati (na primjer, <span style="font-family:&quot;Courier New&quot;">O_NDELAY</span>).</p>
+
+<p>Ako je <i>cmd</i> jednak <span style="font-family:&quot;Courier New&quot;">F_GETFL</span>,
+ovim pozivom se kao rezultat dobiva stanje svih zastavica za otvorenu datoteku
+s opisnikom <i>fd</i>.</p>
+
+<p>Dalji rad sa imenovanim cjevovodima je isti kao i sa običnim cjevovodima.
+Koriste se pozivi <i>read</i> i <i>write </i>ili funkcije iz standardne
+biblioteke koje unutar sebe također koriste ove pozive za pristup podacima.</p>
+<p><a href="http://www.zemris.fer.hr/predmeti/os2/komunikacija/imen_cj.c">Primjer programa s imenovanim cjevovodima</a></p>
+
+</div>
+
+<hr>
+
+
+
+
+</body></html>

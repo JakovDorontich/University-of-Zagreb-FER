@@ -1,0 +1,13 @@
+Zadatak 4.
+
+Funkcija 1: 	X0=[-1.9, 2]
+Postupak transformacije u problem bez ogranièenja:
+	Minimum je u tocki:  [0.01019, 0.010191]
+	Vrijednost funkcije cilja u tocki:  0.9899002364016863
+	Broj evaluacija:  266
+
+Funkcija 2: 	X0=[0.1, 0.3]
+Postupak transformacije u problem bez ogranièenja:
+	Minimum je u tocki:  [1.999999, 2.000001]
+	Vrijednost funkcije cilja u tocki:  4.000004000031939
+	Broj evaluacija:  332

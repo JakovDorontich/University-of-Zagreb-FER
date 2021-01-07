@@ -1,0 +1,19 @@
+---BEGIN OS2 CRYPTO DATA---
+Description:
+    Crypted file
+
+Method:
+    AES
+    CBC
+
+Key length:
+    0100
+
+Data:
+    n0NvDTo8e3vtbuB9u7x4eSN+UF/osETUs3MTZcldLANfG8dUgkoSbT+3obyL
+    Ig35rsJr+mc8cRPB502VryyH4YdtPRWkLTCRPa5cetd+hK9I1NUvP8TR9+Yg
+    KdVFs2SjJx53j3zBhCWY/DqhbY1jimcdY9t4upSYwN6vuJ195AiXuSHA6RR4
+    gp/3VKCzfBQPS5/BvSJCloXcYafoWC4MOE48txez4ZYq87I6+Sn4PHD5Nf5S
+    afaAD9n4tnYdOGrJK7MWeYnkdl7NAj8Qk4jWhqRBYOIZiNNrThBAX9LnW6Y=
+
+---END OS2 CRYPTO DATA---

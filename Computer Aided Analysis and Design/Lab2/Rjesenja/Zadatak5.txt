@@ -1,0 +1,18 @@
+Zadatak 5.
+
+Simpleks postupak po Nelderu i Meadu: 
+X0=[15, -40]
+	Minimum je u tocki:  [16.329102, -40.857422]
+	Broj evaluacija:  9
+X0=[-22, -46]
+	Minimum je u tocki:  [-21.650391, -45.314453]
+	Broj evaluacija:  7
+X0=[-1, -37]
+	Minimum je u tocki:  [-0.65625, -37.6875]
+	Broj evaluacija:  11
+X0=[12, 34]
+	Minimum je u tocki:  [13.094238, 35.325684]
+	Broj evaluacija:  11
+X0=[-32, 48]
+	Minimum je u tocki:  [-31.09668, 47.158691]
+	Broj evaluacija:  7

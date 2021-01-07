@@ -1,0 +1,175 @@
+Zadatak 1.
+
+Funkcija 1:
+Binarni prikaz:
+	Minimum je u tocki:  [0.781, 0.609]
+	Vrijednost funkcije cilja u tocki:  0.048
+	Broj evaluacija funkcije cilja:  10000
+Prikaz s pomicnom tockom:
+	Minimum je u tocki:  [1.0003305838125987, 1.0007303870507744]
+	Vrijednost funkcije cilja u tocki:  1e-06
+	Broj evaluacija funkcije cilja:  35641
+
+Funkcija 3:
+Binarni prikaz:
+	Minimum je u tocki:  [3.573, 26.564, 14.303, 30.378, -7.921]
+	Vrijednost funkcije cilja u tocki:  1600.519
+	Broj evaluacija funkcije cilja:  10000
+Prikaz s pomicnom tockom:
+	Minimum je u tocki:  [7.035224174795212, 0.34440510312103384, -12.590385666284487, -2.18892433710969, 12.30633152024887]
+	Vrijednost funkcije cilja u tocki:  373.910315
+	Broj evaluacija funkcije cilja:  100000
+
+Funkcija 6:
+Binarni prikaz:
+	Minimum je u tocki:  [2.923, 12.233]
+	Vrijednost funkcije cilja u tocki:  0.127
+	Broj evaluacija funkcije cilja:  10000
+Prikaz s pomicnom tockom:
+	Minimum je u tocki:  [-0.07459093895044558, -3.1375983097041744]
+	Vrijednost funkcije cilja u tocki:  0.009716
+	Broj evaluacija funkcije cilja:  100000
+
+Funkcija 7:
+Binarni prikaz:
+	Minimum je u tocki:  [4.305, 8.528]
+	Vrijednost funkcije cilja u tocki:  3.092
+	Broj evaluacija funkcije cilja:  10000
+Prikaz s pomicnom tockom:
+	Minimum je u tocki:  [0.23430700345604494, -0.06288623805752686]
+	Vrijednost funkcije cilja u tocki:  0.493088
+	Broj evaluacija funkcije cilja:  100000
+--------------------------------------------------------------------------
+Zadatak 2.
+
+Funkcija 6:
+Dimenzionalnost funkcije je 1
+	Minimum je u tocki:  [-0.0008115485775847723]
+	Vrijednost funkcije cilja u tocki:  1e-06
+	Broj evaluacija funkcije cilja:  5722
+Dimenzionalnost funkcije je 3
+	Minimum je u tocki:  [-4.117323995986271, -4.124084257850658, -2.332839316266775]
+	Vrijednost funkcije cilja u tocki:  0.037224
+	Broj evaluacija funkcije cilja:  100000
+Dimenzionalnost funkcije je 6
+	Minimum je u tocki:  [13.504374771070518, 7.415024391807719, 7.506073120773277, -19.31391530367912, 6.537611016873447, -9.438774729974762]
+	Vrijednost funkcije cilja u tocki:  0.345506
+	Broj evaluacija funkcije cilja:  100000
+Dimenzionalnost funkcije je 10
+	Minimum je u tocki:  [10.564347890750474, 0.6407213532670245, -19.63407754889708, 7.475895565356796, 13.591234976851965, 9.536824495270563, 10.475746844311564, 0.1378030806001453, 15.704937675383688, -32.152798034953584]
+	Vrijednost funkcije cilja u tocki:  0.451776
+	Broj evaluacija funkcije cilja:  100000
+
+Funkcija 7:
+Dimenzionalnost funkcije je 1
+	Minimum je u tocki:  [2.4688591462263596e-13]
+	Vrijednost funkcije cilja u tocki:  1e-06
+	Broj evaluacija funkcije cilja:  2116
+Dimenzionalnost funkcije je 3
+	Minimum je u tocki:  [-3.3061223693612365, -0.7831736235249285, -2.0989396369778683]
+	Vrijednost funkcije cilja u tocki:  1.999134
+	Broj evaluacija funkcije cilja:  100000
+Dimenzionalnost funkcije je 6
+	Minimum je u tocki:  [-6.157718100463377, 0.18596042373812594, 6.412481292741312, -26.792520668857083, 5.275568480641373, 15.925154435484867]
+	Vrijednost funkcije cilja u tocki:  5.731357
+	Broj evaluacija funkcije cilja:  100000
+Dimenzionalnost funkcije je 10
+	Minimum je u tocki:  [35.69741416527693, 35.89426712451874, 14.45081942851716, 29.14634128193847, -8.706669876785066, 6.426161354626505, -10.043334300985784, 17.150810456660345, 20.176787633152603, -8.166575075699312]
+	Vrijednost funkcije cilja u tocki:  8.239555
+	Broj evaluacija funkcije cilja:  100000
+--------------------------------------------------------------------------
+Zadatak 3.
+
+Funkcija 6:
+Dimenzionalnost funkcije je 3
+	Binarni prikaz:
+		Minimum je u tocki:  [3.5876, 13.4734, 7.1866]
+		Vrijednost funkcije cilja u tocki:  0.1783
+		Broj evaluacija funkcije cilja:  100000
+	Prikaz s pomicnom tockom:
+		Minimum je u tocki:  [-5.137501034995488, 11.360249718737272, -1.480559342178986]
+		Vrijednost funkcije cilja u tocki:  0.126991
+		Broj evaluacija funkcije cilja:  100000
+Dimenzionalnost funkcije je 6
+	Binarni prikaz:
+		Minimum je u tocki:  [28.8261, 17.9065, -0.9722, 21.4838, 17.7599, -16.9388]
+		Vrijednost funkcije cilja u tocki:  0.4519
+		Broj evaluacija funkcije cilja:  100000
+	Prikaz s pomicnom tockom:
+		Minimum je u tocki:  [7.031915143737435, -20.526599131676722, -11.886277783134126, 5.433595603709738, -27.285589204689142, -16.751514715590908]
+		Vrijednost funkcije cilja u tocki:  0.429723
+		Broj evaluacija funkcije cilja:  100000
+
+Funkcija 7:
+Dimenzionalnost funkcije je 3
+	Binarni prikaz:
+		Minimum je u tocki:  [-2.3072, -0.0846, -3.2594]
+		Vrijednost funkcije cilja u tocki:  1.9991
+		Broj evaluacija funkcije cilja:  100000
+	Prikaz s pomicnom tockom:
+		Minimum je u tocki:  [-7.018139907674071, 2.927467029354788, 1.6861357112969504]
+		Vrijednost funkcije cilja u tocki:  2.791633
+		Broj evaluacija funkcije cilja:  100000
+Dimenzionalnost funkcije je 6
+	Binarni prikaz:
+		Minimum je u tocki:  [4.9392, -17.6776, -10.2403, -17.1196, -35.1108, -1.7294]
+		Vrijednost funkcije cilja u tocki:  6.6786
+		Broj evaluacija funkcije cilja:  100000
+	Prikaz s pomicnom tockom:
+		Minimum je u tocki:  [-16.40527210769027, -5.602044096394967, 28.502197727050728, 9.975863883606843, 17.700474921180938, -21.254719024342947]
+		Vrijednost funkcije cilja u tocki:  6.669411
+		Broj evaluacija funkcije cilja:  100000
+--------------------------------------------------------------------------
+Zadatak 4.
+
+Funkcija 6:
+Dimenzionalnost funkcije je 2
+	Velicina populacije: 10
+		Minimum je u tocki:  [-2.7064347858545776, -1.5891185361355111]
+		Vrijednost funkcije cilja u tocki:  0.009716
+		Broj evaluacija funkcije cilja:  10000
+	Velicina populacije: 30
+		Minimum je u tocki:  [-0.581346876150343, -3.0841726050324842]
+		Vrijednost funkcije cilja u tocki:  0.009716
+		Broj evaluacija funkcije cilja:  10000
+	Velicina populacije: 50
+		Minimum je u tocki:  [4.838025304873988, -3.999509748454896]
+		Vrijednost funkcije cilja u tocki:  0.037224
+		Broj evaluacija funkcije cilja:  10000
+	Velicina populacije: 100
+		Minimum je u tocki:  [1.9181767532418976, 2.484086370719366]
+		Vrijednost funkcije cilja u tocki:  0.009716
+		Broj evaluacija funkcije cilja:  10000
+	Velicina populacije: 200
+		Minimum je u tocki:  [3.094200125613591, -0.516164225456921]
+		Vrijednost funkcije cilja u tocki:  0.009718
+		Broj evaluacija funkcije cilja:  10000
+	Velicina populacije: 500
+		Minimum je u tocki:  [1.1481745101929137, 2.932128394360421]
+		Vrijednost funkcije cilja u tocki:  0.009823
+		Broj evaluacija funkcije cilja:  10000
+	Velicina populacije: 1000
+		Minimum je u tocki:  [3.2233915626452436, 5.32419923223297]
+		Vrijednost funkcije cilja u tocki:  0.039847
+		Broj evaluacija funkcije cilja:  10000
+--------------------------------------------------------------------------
+Zadatak 5.
+
+Funkcija 6:
+Dimenzionalnost funkcije je 6
+	Velicina turnira: 3
+		Minimum je u tocki:  [-23.649667779181552, 43.18174466763589, 21.56292554525879, 19.639157076355747, 26.927248770174362, -18.739441171936473]
+		Vrijednost funkcije cilja u tocki:  0.482542
+		Broj evaluacija funkcije cilja:  10000
+	Velicina turnira: 5
+		Minimum je u tocki:  [-7.085738046817513, 14.60874445938164, 9.0323950627117, 5.780978574085439, 0.7485603404317789, -24.632910342784626]
+		Vrijednost funkcije cilja u tocki:  0.373291
+		Broj evaluacija funkcije cilja:  10000
+	Velicina turnira: 10
+		Minimum je u tocki:  [-50.0, 1.957364025078259, -8.740848085068889, -12.058552563236379, -20.008792289217432, -8.380600986492691]
+		Vrijednost funkcije cilja u tocki:  0.471615
+		Broj evaluacija funkcije cilja:  10000
+	Velicina turnira: 20
+		Minimum je u tocki:  [10.581978387735816, -0.931046863219583, 10.729802612775414, -0.17931031118474416, -17.65485402000925, 9.547542586874917]
+		Vrijednost funkcije cilja u tocki:  0.312103
+		Broj evaluacija funkcije cilja:  10000

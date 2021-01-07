@@ -1,0 +1,20 @@
+---BEGIN OS2 CRYPTO DATA---
+Description:
+    Signature
+
+Method:
+    SHA-256
+    RSA
+
+Key length:
+    0100
+    0400
+
+Signature:
+    9cc224b53c8852ad28b3633dc8f9738424182da88a6ebd7fd002ca289765
+    74ba9775b66f4cff9583cce9612a914f18bba36bd681233813e8523b1b7b
+    c64aeb4c00f3963b84b5b450fac54a7c47ff3670f946ffd24e22f54a0406
+    880aad1316c0759ca8547eea467706e213a63907b88d24e51b451f5504b1
+    e1c9754f97ce2ce5
+
+---END OS2 CRYPTO DATA---

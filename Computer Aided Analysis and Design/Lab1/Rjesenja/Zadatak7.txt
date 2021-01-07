@@ -1,0 +1,4 @@
+Zadatak 7.
+
+Inverz matrice koristenjem LUP dekompozicijom:
+ERROR: Dijelimo s 0 u supstituciji unazad!

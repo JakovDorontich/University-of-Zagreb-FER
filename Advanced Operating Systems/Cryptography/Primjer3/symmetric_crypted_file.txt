@@ -1,0 +1,15 @@
+---BEGIN OS2 CRYPTO DATA---
+Description:
+    Crypted file
+
+Method:
+    AES
+    CBC
+
+Key length:
+    0080
+
+Data:
+    gdw9b0RI3Yh0XMfym6CFtw==
+
+---END OS2 CRYPTO DATA---

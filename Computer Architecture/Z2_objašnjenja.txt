@@ -1,0 +1,117 @@
+R0 - rezultat
+;
+R1 - Broj podataka u bloku
+;
+R2 - Broj bitova u bajtu - 1
+;
+R3 - Pozicija podataka u memoriji
+;
+R4 - Broj jedinica u podatku
+;
+R5 - Registar u koji se sprema originalna vrijednost broja.
+;
+R6 - Broj pretvorbi
+		
+		
+
+ORG 	0
+		
+
+GLAVNI	MOVE	%D 12, R1		;Imamo 12(10) elemenata, pa dekadski upisujemo 12 u R1
+		
+MOVE	100, R3			;Pozicija na kojem se ulazni blok nalazi je 100.
+		
+MOVE	0, R6			;Postavljamo brojac transformiranih okteta u 0.
+		
+MOVE	10000, SP		;Stack pointer nam se nalazi u 10000.
+
+LOOP	
+LOADB	R0, (R3)		;Ucitavamo bajt na lokaciji zapisanoj u R3 u R0.
+		
+CALL	PAR				;Zovemo nas potprogram
+		
+STOREB	R0, (R3)		;Nakon sto se izvrsi, transformirani broj u R0 spremamo na lokaciju na koju pokazuje R3.
+		
+CMP		R5, R0			;U R5 je originalan broj, ako su isti, skace na labelu isti, ako ne, nastavlja s kodom.
+		
+JP_Z	ISTI
+		ADD		R6, 1, R6		;Broj se transformirao, pa se nas brojac povecava za 1.
+ISTI	
+ADD		R3, 1, R3		;Pomicemo se na sljedeci element u bloku. Kako se radi o oktetima, pomicemo se za samo 1 bajt.
+		
+SUB		R1, 1, R1		;Smanjujemo brojac elemenata u bloku jer smo upravo 1 odradili.
+		
+JP_NZ	LOOP
+		
+		STORE	R6, (2002)		;Spremamo brojac transformiranih brojeva u mem. lokaciju 2002. Lokacija je proizvoljna, ali gledajte da je barem veca od 120
+		
+		
+HALT
+	
+;-----------------------------------------------------------------------------		
+		
+
+
+
+PAR
+		PUSH	R0				;Spremamo nepromijenjeni element.
+		
+PUSH	R2				;Spremamo sto god je bilo u R2 registru,
+		
+PUSH	R4				;a i u R4 registru.
+		
+
+;									SP 		- #R4#
+
+;			IZGLED					SP + 4	- #R2#
+
+;			 STOGA					SP + 8	- #podatak#
+
+;									SP + C	- #pov.adr.#
+
+		
+MOVE	7, R2			;U R2 stavljamo kolicinu bitova koje cemo pomicati. Kako nas broj ima 7 bitova podataka, a 8. je paritetni, micemo 7 bitova.
+		
+MOVE	0, R4			;R4 definiramo kao brojac jedinica u binarnom zapisu broja. Inicijalno taj brojac je u 0.
+		
+
+LOOP2	SHR		R0, 1, R0		;Petlja zapocinje da se nas podatak logicki pomakne za 1 mjesto udesno
+		
+ADC		R4, 0, R4		;Ako je carry u 1, onda ce ADC R4 + 0 + C biti jednak R4 + 1, tj. nas brojac jedinica ce se povecati za 1.
+		
+SUB		R2, 1, R2		;Smanjujemo broj bitova kroz koje jos trebamo pomicati podatak.
+		
+JP_NZ	LOOP2
+		
+		
+LOADB	R0, (SP+8)		;Petlja se izvrsila, ali nas broj je unisten. Nista zato, obnovit cemo ga tako da ga povucemo sa stoga, s adrese SP + 8.
+		
+SHR		R4, 1, R4		;Nas brojac pomicemo za 1 mjesto u desno, tako se rijesavamo najmanje znacajnog bita, koji nam govori je li broj paran ili ne.
+		
+JP_C	NEPARAN			;Ako C = 1, broj je bio neparan, pa skacemo na taj dio koda.
+		
+		
+OR 		R0, 80, R0		;Ako je bio paran broj znamenaka, osigurat cemo da je na najznacajnijem bitu jedinica. 80(16) = 1000 0000(2)
+		
+JP		KRAJ			;Ne izvodimo ostatak potprograma, idemo na kraj.
+		
+
+NEPARAN	AND		R0, 7F, R0		;Ako je bilo neparno jedinica, to je to, nas najznacajniji bit MORA biti 0. Izvrsavamo logicko I sa 7F(16) [0111 1111(2)]
+		
+
+KRAJ	POP R4					;Redom vracamo stogod je bilo u R4, stogod je bilo u R2, a u R5 stavljamo prvotnu vrijednost elementa.
+		
+POP R2
+		
+POP R5
+		
+RET						;POP-amo povratnu adresu i vracamo se u glavni program.
+	
+
+	
+
+;-----------------------------------------------------------------------------
+		
+		
+ORG		100
+		DB		00, 01, 0FF, 02, 03, 0F3, 0F8, 0E, 0B, 36, 7E, 9F

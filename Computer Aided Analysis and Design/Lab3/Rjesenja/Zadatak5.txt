@@ -1,0 +1,14 @@
+Zadatak 5.
+
+Funkcija 4: 	X0=[0, 0]
+Postupak transformacije u problem bez ogranièenja:
+	Minimum je u tocki:  [2.000025, 0.999975]
+	Vrijednost funkcije cilja u tocki:  2.0061535139850424
+	Broj evaluacija:  268
+
+Funkcija 4: 	X0=[5, 5]
+Postupak transformacije u problem bez ogranièenja:
+	Postupak pronalazenja unutarnje tocke je odredio novu pocetnu tocku: X0= [1.0, 1.0]
+	Minimum je u tocki:  [2.000025, 0.999975]
+	Vrijednost funkcije cilja u tocki:  2.0061535139850424
+	Broj evaluacija:  267

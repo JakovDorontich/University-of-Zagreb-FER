@@ -1,0 +1,55 @@
+Zadatak 1.
+
+Pocetne tocke pretrazivanja X0 su: 10, 20, 50, 100
+
+Postupak zlatnog reza:
+	Minimum je u intervalu:  [3.0, 3.000001]
+	Broj evaluacija:  35
+Pretraživanje po koordinatnim osima:
+	Minimum je u tocki:  [3.0]
+	Broj evaluacija:  3
+Simpleks postupak po Nelderu i Meadu: 
+	Minimum je u tocki:  [4.0]
+	Broj evaluacija:  3
+Hooke-Jeeves postupak: 
+	Minimum je u tocki:  [3.0]
+	Broj evaluacija:  24
+
+Postupak zlatnog reza:
+	Minimum je u intervalu:  [3.0, 3.0]
+	Broj evaluacija:  37
+Pretraživanje po koordinatnim osima:
+	Minimum je u tocki:  [3.0]
+	Broj evaluacija:  2
+Simpleks postupak po Nelderu i Meadu: 
+	Minimum je u tocki:  [2.0]
+	Broj evaluacija:  5
+Hooke-Jeeves postupak: 
+	Minimum je u tocki:  [3.0]
+	Broj evaluacija:  27
+
+Postupak zlatnog reza:
+	Minimum je u intervalu:  [3.0, 3.0]
+	Broj evaluacija:  39
+Pretraživanje po koordinatnim osima:
+	Minimum je u tocki:  [3.0]
+	Broj evaluacija:  2
+Simpleks postupak po Nelderu i Meadu: 
+	Minimum je u tocki:  [4.0]
+	Broj evaluacija:  9
+Hooke-Jeeves postupak: 
+	Minimum je u tocki:  [3.0]
+	Broj evaluacija:  35
+
+Postupak zlatnog reza:
+	Minimum je u intervalu:  [3.0, 3.0]
+	Broj evaluacija:  40
+Pretraživanje po koordinatnim osima:
+	Minimum je u tocki:  [3.0]
+	Broj evaluacija:  2
+Simpleks postupak po Nelderu i Meadu: 
+	Minimum je u tocki:  [2.0]
+	Broj evaluacija:  11
+Hooke-Jeeves postupak: 
+	Minimum je u tocki:  [3.0]
+	Broj evaluacija:  42

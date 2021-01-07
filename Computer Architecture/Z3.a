@@ -1,0 +1,82 @@
+VJ1_dat EQU 	0FFFF1000
+	
+VJ2_dat EQU 	0FFFF2000
+VJ2_bis EQU 	0FFFF2004
+	
+VJ3_dat EQU 	0FFFF3000
+VJ3_bis EQU 	0FFFF3004
+VJ3_ser EQU 	0FFFF3008
+VJ3_all EQU 	0FFFF300C
+		
+		ORG 	0
+		MOVE	10000, SP
+		JP 		START
+	
+		ORG 	8
+		DW 		500
+		
+		
+
+START	MOVE	%B 10000, SR
+		MOVE	1, R0
+		STORE	R0, (VJ3_all) 
+		
+LOOP	LOAD	R0, (VJ2_bis)
+		ADD		R0, 0, R0
+		JP_Z	LOOP
+		
+		LOAD	R0, (BROJ)
+		STORE	R0, (VJ2_dat)
+		STORE	R0, (VJ2_bis)
+		
+		LOAD	R0, (BROJAC)
+		ADD		R0, 1, R0
+		STORE	R0, (BROJAC)
+		JP		LOOP
+		
+
+		
+		ORG 	500
+		PUSH 	R0
+		MOVE	SR, R0
+		PUSH	R0
+		
+		STORE	R0, (VJ3_bis)
+		
+		LOAD	R0, (VJ1_dat)
+IS_P	OR		R0, R0, R0
+		JP_P	PLUS
+		
+		MOVE	0, R0
+		STORE	R0, (VJ3_all)
+		HALT
+		
+PLUS	PUSH	R0
+		CALL	OBRADI
+		ADD		SP, 4, SP
+		STORE	R0, (BROJ)
+		
+		LOAD	R0, (BROJAC)
+		STORE	R0, (VJ3_dat)
+
+		STORE	R0, (VJ3_ser)
+		POP 	R0
+		MOVE	R0, SR
+		POP		R0
+		
+		RETI
+		
+OBRADI	PUSH R1
+
+		LOAD	R1, (SP+8)
+		MOVE	1, R0
+		
+		SHL		R0, R1, R0
+		
+		POP		R1
+		RET
+		
+		
+		
+BROJ	DW 0
+BROJAC	DW 0

@@ -1,0 +1,126 @@
+Zadatak 4.
+
+Funkcija 1: 	X0=[0.5, 0.5]
+Simpleks postupak po Nelderu i Meadu: 
+Korak pocetnog simpleksa iznosi  1
+	Minimum je u tocki:  [0.99978, 0.999537]
+	Broj evaluacija:  77
+Korak pocetnog simpleksa iznosi  2
+	Minimum je u tocki:  [1.000348, 1.000742]
+	Broj evaluacija:  91
+Korak pocetnog simpleksa iznosi  3
+	Minimum je u tocki:  [1.000289, 1.00062]
+	Broj evaluacija:  30
+Korak pocetnog simpleksa iznosi  4
+	Minimum je u tocki:  [0.999003, 0.99802]
+	Broj evaluacija:  59
+Korak pocetnog simpleksa iznosi  5
+	Minimum je u tocki:  [0.999738, 0.999531]
+	Broj evaluacija:  72
+Korak pocetnog simpleksa iznosi  6
+	Minimum je u tocki:  [1.00036, 1.000755]
+	Broj evaluacija:  56
+Korak pocetnog simpleksa iznosi  7
+	Minimum je u tocki:  [1.00031, 1.000659]
+	Broj evaluacija:  45
+Korak pocetnog simpleksa iznosi  8
+	Minimum je u tocki:  [1.000615, 1.001167]
+	Broj evaluacija:  49
+Korak pocetnog simpleksa iznosi  9
+	Minimum je u tocki:  [1.000429, 1.000794]
+	Broj evaluacija:  45
+Korak pocetnog simpleksa iznosi  10
+	Minimum je u tocki:  [0.999557, 0.99924]
+	Broj evaluacija:  99
+Korak pocetnog simpleksa iznosi  11
+	Minimum je u tocki:  [1.000476, 1.000982]
+	Broj evaluacija:  42
+Korak pocetnog simpleksa iznosi  12
+	Minimum je u tocki:  [1.00033, 1.000698]
+	Broj evaluacija:  110
+Korak pocetnog simpleksa iznosi  13
+	Minimum je u tocki:  [1.000295, 1.000618]
+	Broj evaluacija:  78
+Korak pocetnog simpleksa iznosi  14
+	Minimum je u tocki:  [0.999974, 0.999973]
+	Broj evaluacija:  69
+Korak pocetnog simpleksa iznosi  15
+	Minimum je u tocki:  [0.999736, 0.999544]
+	Broj evaluacija:  118
+Korak pocetnog simpleksa iznosi  16
+	Minimum je u tocki:  [0.999776, 0.999508]
+	Broj evaluacija:  94
+Korak pocetnog simpleksa iznosi  17
+	Minimum je u tocki:  [0.999509, 0.999078]
+	Broj evaluacija:  131
+Korak pocetnog simpleksa iznosi  18
+	Minimum je u tocki:  [0.999488, 0.998883]
+	Broj evaluacija:  100
+Korak pocetnog simpleksa iznosi  19
+	Minimum je u tocki:  [1.000492, 1.000933]
+	Broj evaluacija:  46
+Korak pocetnog simpleksa iznosi  20
+	Minimum je u tocki:  [1.000406, 1.000803]
+	Broj evaluacija:  64
+
+Funkcija 1: 	X0=[20, 20]
+Korak pocetnog simpleksa iznosi  1
+	Minimum je u tocki:  [1.000376, 1.000636]
+	Broj evaluacija:  211
+Korak pocetnog simpleksa iznosi  2
+	Minimum je u tocki:  [1.001227, 1.002478]
+	Broj evaluacija:  185
+Korak pocetnog simpleksa iznosi  3
+	Minimum je u tocki:  [0.999282, 0.998558]
+	Broj evaluacija:  154
+Korak pocetnog simpleksa iznosi  4
+	Minimum je u tocki:  [0.999879, 0.999838]
+	Broj evaluacija:  176
+Korak pocetnog simpleksa iznosi  5
+	Minimum je u tocki:  [0.99968, 0.999429]
+	Broj evaluacija:  142
+Korak pocetnog simpleksa iznosi  6
+	Minimum je u tocki:  [1.000066, 1.000041]
+	Broj evaluacija:  156
+Korak pocetnog simpleksa iznosi  7
+	Minimum je u tocki:  [1.000182, 1.000436]
+	Broj evaluacija:  129
+Korak pocetnog simpleksa iznosi  8
+	Minimum je u tocki:  [0.999264, 0.998559]
+	Broj evaluacija:  125
+Korak pocetnog simpleksa iznosi  9
+	Minimum je u tocki:  [0.999097, 0.998283]
+	Broj evaluacija:  184
+Korak pocetnog simpleksa iznosi  10
+	Minimum je u tocki:  [1.000324, 1.000608]
+	Broj evaluacija:  168
+Korak pocetnog simpleksa iznosi  11
+	Minimum je u tocki:  [0.999909, 0.999871]
+	Broj evaluacija:  104
+Korak pocetnog simpleksa iznosi  12
+	Minimum je u tocki:  [1.000644, 1.001218]
+	Broj evaluacija:  157
+Korak pocetnog simpleksa iznosi  13
+	Minimum je u tocki:  [1.000064, 1.000115]
+	Broj evaluacija:  172
+Korak pocetnog simpleksa iznosi  14
+	Minimum je u tocki:  [1.000464, 1.001068]
+	Broj evaluacija:  151
+Korak pocetnog simpleksa iznosi  15
+	Minimum je u tocki:  [1.000039, 0.999961]
+	Broj evaluacija:  138
+Korak pocetnog simpleksa iznosi  16
+	Minimum je u tocki:  [1.000467, 1.000876]
+	Broj evaluacija:  62
+Korak pocetnog simpleksa iznosi  17
+	Minimum je u tocki:  [0.999932, 0.999769]
+	Broj evaluacija:  177
+Korak pocetnog simpleksa iznosi  18
+	Minimum je u tocki:  [1.000256, 1.000505]
+	Broj evaluacija:  170
+Korak pocetnog simpleksa iznosi  19
+	Minimum je u tocki:  [1.0005, 1.001075]
+	Broj evaluacija:  177
+Korak pocetnog simpleksa iznosi  20
+	Minimum je u tocki:  [1.000927, 1.001822]
+	Broj evaluacija:  181

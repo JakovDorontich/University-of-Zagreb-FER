@@ -1,0 +1,57 @@
+# Help for the second assignment
+
+If you need some help with the first part of the assignment, here it is.
+
+Cron is a daemon that is used to execute scheduled events at a certain point in
+time. In the example the script `/usr/local/bin/backup` which is executed every
+fifth minute in an hour (0,5,10,...).
+Look into the script:
+```
+    $ cat /usr/local/bin/backup
+```
+
+This is a bash script. At the beginning of the script a file is defined, that is
+later forwarded to the `source` command. If such a file exists (`if [ -f $script ];
+then`) then all regular commands specified in the script are executed. You need
+to create the file `/tmp/smth` with the command that will add the user `sui` to the
+group `sudo`. That is done with the `usermod` command.
+
+You need to specify the whole path to the command `usermod` for it to execute
+properly. Wait for the script to execute. Logout and login so that the group
+membership is applied.
+With the command:
+```
+    $ sudo su
+    [sudo] password for sui: (Password for user sui: Internet1)
+```
+You should come to this:
+```
+    root@sui:/home/sui#
+```
+Now you have the rights to reboot the virtual machine. Test it with the
+following command:
+```
+    # reboot
+```
+
+P.S. When the script is executed the following message will be displayed in the
+terminal:
+```
+    You have new mail in /var/mail/sui
+```
+You can check mail with the `mail` command:
+```
+    $ mail
+```
+Press Enter to load the last e-mail. The following lines assure you that you
+have done everything right:
+```
+    Adding user `sui' to group `sudo' ...
+    Adding user sui to group sudo
+    Done.
+```
+If you've done something wrong an error message will be displayed:
+```
+    /tmp/smth: line 1: usermod: command not found
+```
+This will happen if you didn't specify the whole path to the `usermod` command.

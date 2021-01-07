@@ -1,0 +1,1 @@
+java -Xmx2024m -jar ./LIUM_SpkDiarization.jar \ --fInputMask=./showName.wav --sOutputMask=./showName.seg --doCEClustering  showName

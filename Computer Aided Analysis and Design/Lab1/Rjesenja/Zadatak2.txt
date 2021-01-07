@@ -1,0 +1,20 @@
+Zadatak 2.
+
+Rjesenje sustava LU dekompozicijom:
+ERROR: Pivot element je postao jednak 0 u 2 iteraciji!
+
+Rjesenje sustava LUP dekompozicijom:
+Matrica LU je oblika: 
+4.0 12.0 12.0 
+0.25 -4.0 -2.0 
+0.75 0.0 -3.0 
+
+Matrica P je oblika: 
+0.0 1.0 0.0 
+0.0 0.0 1.0 
+1.0 0.0 0.0 
+
+Rjesenje sustava, tj. matrica x je oblika: 
+3.0 
+1.0 
+-1.0 

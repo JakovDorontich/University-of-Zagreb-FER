@@ -1,0 +1,51 @@
+﻿ORG 	0
+		
+LOAD 	R0, (500)		;U R0 ucitavamo vrijednost na ulaznom bloku, tj. velicinu bloka (5).
+		
+MOVE 	504, R1			;R1 definiramo kao pokazivac na ulazni blok. 504 jer se prva vrijednost tamo nalazi.
+		
+MOVE 	1000, R2		;R2 definiramo kao pokazivac na izlazni blok, nalazi se na mjestu 1000 u memoriji.
+	
+
+LOOP	LOADB	R3, (R1+7)		;Ucitavamo 1 bajt s lokacije R1 + 7 (prvi oktet trenutno elementa ulaznog bloka) i stavljamo ga u R3. Ovo je oktet predznaka.
+		
+
+CMP R3, 80				;Uspoređujemo oktet predznaka sa 80 (1000 0000). Ako su isti, element je negativan broj.
+		
+LOAD 	R3, (R1)		;U R3 ucitavamo 32 najmanje znacajna bita.
+		
+JP_NZ	POZ				;Ako je CMP vratio vrijednost 1 u zastavici Z, broj je pozitivan, pa idemo na taj dio koda.
+		
+		
+AND 	R3, 0FFFF, R3	;Ovo nije preskoceno, dakle broj je negativan. Prvo u registru brisemo najznacajnijih 16 bitova.
+		
+XOR 	R3, 0FFFF, R3	;Preostalih 16 bitova XOR-amo sa 16 jedinica, kako bi im obrnuli vrijednosti (dobili komplement)
+		
+ADD 	R3, 1, R3		;Na kraju, dobivenom komplementu pribrajamo 1, te tako dobivamo 2'k broj.
+		
+
+POZ		STOREH 	R3, (R2)		;Transformirani ili pozitivan broj zapisujemo na element na koji nas pokazivac R2 pokazuje.
+		
+ADD R1, 8, R1			;Pomicemo pokazivac na ulazni blok za 64-bita unaprijed.
+		
+ADD R2, 2, R2			;Pomicemo pokazivac na izlazni blok za 16-bita unaprijed.
+		
+SUB R0, 1, R0			;Broj brojeva koje trebamo transformirati smanjio se za 1.
+		
+JP_NZ LOOP				;Vrtimo petlju dok nismo prosli kroz sve brojeve.
+		
+		
+MOVE	8000, R3		;Na kraju, moramo izlazni blok zatvoriti sa 8000(16).
+		
+STOREH	R3, (R2)		;Tu posljednju vrijednost također spremamo na ono što pokazivac izlaznog bloka pokazuje.
+		
+		HALT
+		
+		
+
+ORG 	500				;Prvo unosimo 32-bitni broj velicine bloka, a onda polurijeci (16-bitne brojeve) elemenata ulaznog bloka.
+		DW 		5				;Cine se naopako jer assembler koristi little endian zapis.
+		DH		1, 0, 0, 8000, 2, 0, 0, 0, 4, 0, 0, 8000, 25, 0, 0, 0, 49, 0, 0, 8000
+		
+		ORG		1000
+		DS		%D 12			;12 = 5 (velicina bloka) * 2 (bajta) + 2 bajta za delimiter (8000 na kraju)

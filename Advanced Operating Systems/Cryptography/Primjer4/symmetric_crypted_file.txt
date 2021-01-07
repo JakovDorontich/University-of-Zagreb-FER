@@ -1,0 +1,19 @@
+---BEGIN OS2 CRYPTO DATA---
+Description:
+    Crypted file
+
+Method:
+    AES
+    CFB
+
+Key length:
+    00c0
+
+Data:
+    UegJvbrbeRAlDTWWRV2voDfldqhmB4M+5l44w4fwz93b+E/yeNSH6pMt7eEi
+    nJEkotqxCmK2VZ61Gg1LxCvdcgD3HJ/iRmoZExslARnkLeqzkF+LslROKoKI
+    Due+zTodp4HcHqXjY6zupsH/IrCvqjR0wukk0u40O7ro+hcTytjluqM98iMX
+    /1ZDqHl02rjM25qaQzTUCXenlONW2ZP7QIBx9kl422U73WkaeP7wia/SZIuB
+    EaaD/K5mxt0CanRy
+
+---END OS2 CRYPTO DATA---

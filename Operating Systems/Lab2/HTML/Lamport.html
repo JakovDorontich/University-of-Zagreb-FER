@@ -1,0 +1,56 @@
+<html><head><meta http-equiv=Content-Type content="text/html; charset=iso-8859-2">
+<title>Višezadaćni rad</title>
+</head>
+<body lang=EN-GB>
+<h2>Lamportov<b> postupak međusobnog isključivanja</b></h2><h3><b>Zadatak</b></h3><p>Ostvariti sustav paralelnih procesa/dretvi. 
+Primjer strukture procesa, odnosno dretve dana je sljedećim pseudokodom:</p>
+<p>Ostvariti program koji simulira tijek rezervacije stolova u nekom restoranu. 
+Program na početku treba stvoriti određeni broj dretvi/procesa koji se zadaje u 
+naredbenom retku. Svaka dretva/proces nakon isteka jedne sekunde provjerava ima 
+li slobodnih stolova te slučajno odabire jedan od njih. Nakon odabira dretva 
+ulazi u kritični odsječak te ponovo provjerava je li odabrani stol slobodan. Ako 
+jest, označava stol zauzetim i izlazi iz kritičnog odsječka. U oba slučaja, 
+nakon obavljene operacije ispisuje trenutno stanje svih stolova te podatke o 
+obavljenoj rezervaciji. Prilikom ispisa za svaki stol mora biti vidljivo je li 
+slobodan ili broj dretve/procesa koja je taj stol rezervirala. Broj stolova se 
+također zadaje u naredbenom retku. Svaka dretva/proces ponavlja isti postupak 
+sve dok više nema slobodnih stolova. Program završava kada sve dretve/procesi 
+završe. </p>
+<p>Primjer ispisa: (3 dretve, 5 stolova) </p>
+<p><font face="Courier New">Dretva 1: odabirem stol 2 <br>
+Dretva 2: odabirem stol 2 <br>
+Dretva 3: odabirem stol 5 <br>
+Dretva 2: rezerviram stol 2, stanje: <br>
+-2--- <br>
+Dretva 1: neuspjela rezervacija stola 2, stanje: <br>
+-2--- <br>
+Dretva 3: rezerviram stol 5, stanje: <br>
+-2--3 <br>
+itd.</font></p>
+<p>Zaštitu kritičnog odsječka postupka rezervacije stola ostvariti za više procesa/dretvi 
+koristeći 
+Lamportov algoritam međusobnog isključivanja.</p>
+<h3>Lamportov<b> algoritam:</b></h3>
+
+<pre style="margin: 0cm 0cm 0.0001pt; font-size: 10pt; font-family: Courier New;"><u>zajedničke varijable</u>: TRAŽIM[0..<b>n</b>-1], BROJ[0..<b>n</b>-1]</pre>
+<pre><u>funkcija</u> uđi_u_kritični_odsječak(i)
+{
+&nbsp;&nbsp; TRAŽIM[<b>i</b>] = 1
+&nbsp;&nbsp; BROJ[<b>i</b>] = <b>max</b>(BROJ[0],...,BROJ[<b>n</b>-1]) + 1
+&nbsp;&nbsp; TRAŽIM[<b>i</b>] = 0
+
+&nbsp;&nbsp; <u>za</u> <b>j</b> = 0 <u>do</u> <b>n</b>-1 <u>čini</u>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>dok je</u> TRAŽIM[<b>j</b>] &lt;&gt; 0 <u>čini</u>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>ništa</u>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>dok je</u> BROJ[j] &lt;&gt; 0 &amp;&amp; (BROJ[j] &lt; BROJ[i] || (BROJ[j] == BROJ[i] &amp;&amp; j &lt; i)) <u>čini</u>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>ništa
+</u>}
+&nbsp;
+<u>funkcija</u> izađi_iz_kritičnog_odsječka(i)
+{
+   BROJ[<b>i</b>] = 0
+}</pre>
+<p style><b>Upute:</b></p>
+<p><font color="#FF0000">Ako se program rješava s procesima tada treba zajedničke varijable tako organizirati da se prostor za njih zauzme odjednom i podijeli među njima. Ovo je nužno zbog ograničenog broja segmenata i velikog broja korisnika.</font></p>
+
+</body></html>
